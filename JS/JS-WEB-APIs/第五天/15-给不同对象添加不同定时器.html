@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            position: absolute;
+            left: 0;
+            top: 50px;
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }
+        span {
+            position: absolute;
+            left: 0;
+            top: 300px;
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <button>点击span</button>
+    <div></div>
+    <span></span>
+    <script>
+        // let obj = {};
+        // obj.name = 'andy';
+        // 简单动画函数封装 obj目标对象 target目标位置
+        function animate(obj, target) {
+            // 给不同的孩子设置了不同的定时器
+            // 当我们不断点击按钮，这个元素的速度会越来越快，因为开启了太多定时器
+            // 解决方法是 让我们元素只有一个定时器执行
+            // 先清除以前的定时器 只保留当前的定时器
+            clearInterval(obj.clear);
+            obj.clear = setInterval(function(){
+            if (obj.offsetLeft >= target ) {
+                clearInterval(obj.clear);
+            }else {
+                obj.style.left = obj.offsetLeft + 1 + 'px';
+            }
+        },30)
+        }
+        let div = document.querySelector('div');
+        let span = document.querySelector('span');
+        let btn = document.querySelector('button');
+        btn.addEventListener('click',function(){
+            animate(span,300);
+        });
+        // 调用函数
+        animate(div,500);
+        // animate(span,300);
+        
+        
+    </script>
+</body>
+</html>

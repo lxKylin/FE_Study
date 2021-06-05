@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      #app {
+        width: 480px;
+        height: 100px;
+        margin: 200px auto;
+      }
+      .input-num {
+        margin-top: 20px;
+        height: 100%;
+        display: flex;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 4px black;
+      }
+      .input-num button {
+        width: 150px;
+        height: 100%;
+        font-size: 40px;
+        color: gray;
+        cursor: pointer;
+        border: none;
+        outline: none;
+      }
+      .input-num span {
+        height: 100%;
+        font-size: 40px;
+        flex: 1;
+        text-align: center;
+        line-height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <img src="http://www.itheima.com/images/logo.png" alt="" />
+      <!-- 计数器 -->
+      <div class="input-num">
+        <button @click="sub"> - </button>
+        <span>{{ num }}</span>
+        <button @click="add"> + </button>
+      </div>
+    </div>
+  </body>
+</html>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- 编码 -->
+<script>
+  /*
+    1. data中定义num属性,类型是数字,渲染到2个按钮中间
+    2. 减号绑定点击事件,对应的方法名叫sub,大于0之前递减
+    3. 加号绑定点击事件,对应的方法名叫add,小于0之前累加
+  */
+  // 创建Vue实例
+  var app = new Vue({
+    el: "#app",
+    data: {
+      // 修改的数字
+      num:1
+    },
+    methods: {
+      // 减
+      sub:function(){
+        // console.log("sub");
+        // 递减
+        if(this.num>0){
+          this.num--;
+        }else{
+          alert("别点啦,太小啦!");
+        }
+      },
+      // 加
+      add:function(){
+        // console.log("add");
+        // 累加
+        if(this.num<10){
+          this.num++;
+        }else{
+          alert("别点啦,太大啦!");
+        }
+      }
+    }
+  });
+</script>

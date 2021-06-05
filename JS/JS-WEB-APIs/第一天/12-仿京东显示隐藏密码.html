@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京东登录</title>
+    <style>
+        .box {
+            position: relative;
+            width: 400px;
+            border-bottom: 1px solid #ccc;
+            margin: 100px auto ;
+        }
+        .box input {
+            width: 370px;
+            height: 30px;
+            border: 0;
+            outline: none;
+        }
+        .box img {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            width: 24px;
+        } 
+    </style>
+</head>
+<body>
+    <div class="box">
+        <label for="">
+            <img src="./images/close.png" alt="" id="eye">
+        </label>
+        <input type="password" name="" id="pwd">
+    </div>
+    <script>
+        // 1.获取元素
+        let img = document.getElementById('eye');
+        let pwd = document.getElementById('pwd');
+        let flag = 0;
+        img.onclick = function() {
+            // 点击一次后flag一定要变化
+            if (flag == 0) {
+                img.src = './images/open.png';
+                pwd.type = 'text';
+                flag = 1;
+            } else {
+                img.src = './images/close.png';
+                pwd.type = 'password';
+                flag = 0;
+            }
+            
+        }
+    </script>
+</body>
+</html>

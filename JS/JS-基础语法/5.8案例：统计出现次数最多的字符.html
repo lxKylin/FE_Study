@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var str = 'abcoefoxyozzopp';
+        var o = {};
+        for (var i = 0; i < str.length; i++) {
+            var chars = str.charAt(i); //chars是 字符串的每一个字符
+            if(o[chars]) { // o[chars] 得到的是属性值
+                o[chars]++;
+            } else {
+                o[chars] = 1;
+            }
+        }
+        console.log(o);
+        //遍历对象
+        var max = 0;
+        var ch = '';
+        for (var k in o) {
+            //k得到的是属性名，o[k]得到的是属性值
+            if(o[k] > max) {
+                max = o[k];
+                ch = k;
+            }
+        }
+        console.log(max);
+        console.log('出现最多的字符是：' + ch);
+        
+    </script>   
+</head>
+<body>
+    
+</body>
+</html>

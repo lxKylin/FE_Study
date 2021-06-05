@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //格式化日期 年月日
+        // var date = new Date();
+        // console.log(date.getFullYear());//返回当前日期年份
+        // console.log(date.getMonth() + 1);//返回月份小一个月，要加1
+        // console.log(date.getDate());//返回几号
+        // console.log(date.getDay);//返回星期，星期日是0
+
+        // var year = date.getFullYear();
+        // var month = date.getMonth() + 1;
+        // var dates = date.getDate();
+        // var arr = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+        // var day = date.getDay();
+        // console.log('今天是：'+ year + '年' + month + '月' + dates + '日' + arr[day]);
+
+        // //格式化日期时分秒
+        // //var date = new Date();
+        // console.log(date.getHours());//时
+        // console.log(date.getMinutes());//分
+        // console.log(date.getSeconds());//秒
+        // //要求封装一个函数返回当前的时分秒，格式 08:08:08
+        // function getTime() {
+        //     var time = new Date();
+        //     var h = time.getHours();
+        //     h = h < 10 ? '0' + h : h;
+        //     var m = time.getMinutes();
+        //     m = m < 10 ? '0' + m : m;
+        //     var s = time.getSeconds();
+        //     s = s < 10 ? '0' + s : s;
+        //     return h + ':' + m +':' + s;
+        // }
+        // console.log(getTime());
+
+        let date = new Date();
+        console.log(date.getFullYear());
+        console.log(date.getMonth() + 1);
+        console.log(date.getDate());//日
+        console.log(date.getDay());//星期
+
+        let year = date.getUTCFullYear();
+        let month = date.getMonth() + 1;
+        let data = date.getDate();
+        let day = date.getDay();
+        let arr = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+        console.log('今天是' + year + '年' + month + '月' + data + '日' + arr[day]);
+
+        function getTimer() {
+            let time = new Date();
+            let h = date.getHours();
+            let m = date.getMinutes();
+            let s = date.getSeconds();
+            h = h < 10 ? '0' + h : h;
+            m = m < 10 ? '0' + m : m;
+            s = s < 10 ? '0' + s : s;
+            return h + ':' + m + ':' + s;
+        }
+        console.log(getTimer());
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

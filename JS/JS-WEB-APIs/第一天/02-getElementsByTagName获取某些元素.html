@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>知否知否，应是等你好久1</li>
+        <li>知否知否，应是等你好久2</li>
+        <li>知否知否，应是等你好久3</li>
+        <li>知否知否，应是等你好久4</li>
+        <li>知否知否，应是等你好久5</li>
+    </ul>
+    <ol>
+        <li>一个人好久好久</li>
+        <li>一个人好久好久</li>
+        <li>一个人好久好久</li>
+        <li>一个人好久好久</li>
+        <li>一个人好久好久</li>
+    </ol>
+    <script>
+        //返回的是 获取过来元素对象的集合 以伪数组的形式存储的
+        let lis = document.getElementsByTagName('li');
+        console.log(lis);
+        //2.要依次打印元素对象，采用遍历
+        for (let i = 0; i < lis.length; i++) {
+            console.log(lis[i]);
+        }
+        //3.如果页面中只有一个li 返回的还是伪数组的形式
+        //4.如果页面中没有li 返回的是一个空的伪数组的形式
+        // 5. element.getElementsByTagName('标签名'); 父元素必须是指定的单个元素
+        // var ol = document.getElementsByTagName('ol'); // [ol]
+        // console.log(ol[0].getElementsByTagName('li'));
+        var ol = document.getElementById('ol');
+        console.log(ol.getElementsByTagName('li'));
+    </script>
+</body>
+</html>

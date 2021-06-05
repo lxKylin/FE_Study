@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组求和及平均值</title>
+    <script>
+        var arr = [2,6,1,7,4];
+        var sum = 0;
+        var average = 0;
+        for (var i = 0; i < arr.length; i++){
+            sum += arr[i]; //我们加的是数组元素 arr[i] 不是计数器i
+        }
+        average = sum / arr.length;
+        console.log(sum,average); //输出多个变量，用逗号分隔
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

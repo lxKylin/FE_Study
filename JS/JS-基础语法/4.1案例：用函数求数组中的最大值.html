@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function getArrMax(arr) {
+            var max = arr[0];
+            for (var i = 1; i <= arr.length; i++) {
+                if (arr[i] > max) {
+                    max = arr[i];
+                }
+            }
+            return max;
+        }
+        //getMax([5,2,99,101,67,77]);
+        //在实际开发中常用一个变量来接收函数的返回结果
+        var re = getArrMax([5,2,99,101,67,77]);
+        console.log(re);
+
+        function getSum(num1,num2) {
+            return num1+num2;
+        }
+        console.log(getSum('1',2,3));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

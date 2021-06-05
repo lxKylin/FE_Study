@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算年龄</title>
+    <script>
+        var year = prompt('请输入您的出生年份');
+        var result = parseInt(year);
+        // var age = 2021 - result;
+        var age = 2021 - year;
+        //year去过来的是字符型，但这里的减法有隐式转换
+        alert('您的年龄是'+age);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

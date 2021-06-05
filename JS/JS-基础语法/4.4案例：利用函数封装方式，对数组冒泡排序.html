@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //sort排序
+        function sort(arr) {
+            for (var i = 0; i <= arr.length-1; i++) {
+                for (var j = 0; j <= arr.length-i-1; j++) {
+                //内部交换两个变量的值，前一个和后面一个数组元素相比较
+                    if (arr[j] > arr[j + 1]) {
+                        var temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }  
+            }
+            return arr;
+        }
+        var arr1 = sort([1,4,2,9]);
+        console.log(arr1);
+        var arr2 = sort([11,7,22,999]);
+        console.log(arr2);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

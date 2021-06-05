@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表格案列</title>
+</head>
+<body>
+    <table  border="1" cellspacing="0" cellpadding="10" align="center">
+        <!--边框细为1；单元格之间距离为0；单元格内部间距为10-->
+        <caption>华为手机</caption>
+        <colgroup span="4" width="100"></colgroup><!--四列宽度设为100-->
+        <thead>
+            <tr>
+                <th>型号</th>
+                <th>图片</th>
+                <th>价格</th>
+                <th>数量</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr align="center"><!--每行居中-->
+                <td>P40</td>
+                <td><img src="../../photo/P40.jpg"alt="P40" height="100"></td>
+                <td>5999</td>
+                <td>5</td>
+            </tr>
+            <tr align="center">
+                <td>Mate30pro</td>
+                <td><img src="../../photo/mate30pro.jpg" alt="Mate30pro" height="100"></td>
+                <td>5999</td>
+                <td>4</td>
+            </tr>
+            <tr align="center">
+                <td>nova7pro</td>
+                <td><img src="../../photo/Nova7Pro.jpg" alt="nova7pro" height="100"></td>
+                <td>3999</td>
+                <td>10</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr align="center">
+                <td colspan="4">总计：15994</td><!--跨列合并4格-->
+            </tr>
+
+        </tfoot>
+    </table>
+</body>
+</html>

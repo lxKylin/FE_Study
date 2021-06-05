@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表格标签</title>
+</head>
+<body>
+    <!--表格元素-->
+    <!--表格用<table>标签定义，里面由若干行和列的单元格组成-->
+    <!--表格元素中，使用<tr>表示表格中的一行，使用<td>表示列-->
+    <!--表格可以定义标题，用<caption>标签定义-->
+    <!--表格结构很重要，不能乱-->
+    <!--cellspacing单元格外间距-->
+    <!--cellpadding单元格内间距-->
+    <table>
+        <caption>华为手机</caption>
+        <tr>
+            <td>型号</td>
+            <td>颜色</td>
+            <td>价格</td>
+        </tr>
+        <tr>
+            <td>P40</td>
+            <td>红</td>
+            <td>5999</td>
+        </tr>
+        <tr>
+            <td>MATE40</td>
+            <td>白</td>
+            <td>5999</td>
+        </tr>
+    </table>
+    <!--结构-->
+    <!--可以使用<thead><tbody><tfoot>三个标签分别定义表格的头部、主体、底部-->
+    <table>
+        <thead><tr><td>头部</td></tr></thead>
+        <tbody><tr><td>主体</td></tr></tbody>
+        <tfoot><tr><td>底部</td></tr></tfoot>
+    </table>
+
+    <!--表格的行 tr-->
+    <!--<th>表头标签-->
+    <!--thead tfoot 只能用一次-->
+    <!--border属性,边框-->
+    <!--宽度高度只会改变tbody-->
+    <!--col标签,定义每一列的特性-->
+    <!--colgroup标签,定义一组列的特性-->
+
+    <table border="5" width="500" height="100">
+        <caption>华为手机</caption>
+        <colgroup>
+            <col bgcolor="red"><!--bgcolor为背景颜色-->
+            <col bgcolor="blue">
+            <col bgcolor="yellow">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>型号</th>
+                <th>颜色</th>
+                <th>价格</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>P40</td>
+                <td>红</td>
+                <td>5999</td>
+            </tr>
+            <tr>
+                <td>MATE40</td>
+                <td>白</td>
+                <td>5999</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+
+    <!--表格的列 td-->
+    <!--有两个常用的属性，类似合并单元格，colspan定义单元格跨列，rowspan定义单元格跨行-->
+    <table border="1" cellspacing="0" cellpadding="10" align="center">
+        <!--cellspacing单元格外间距-->
+        <!--cellpadding单元格内间距-->
+        <!--align="center"居中-->
+        <!--valign="top"居上-->
+        <tr>
+            <td colspan="2" align="center">1.1</td>
+            <!-- <td>1.2</td> -->
+            <td>1.3</td>
+            <td>1.4</td>
+            <td>1.5</td>
+        </tr>
+        <tr>
+            <td>2.1</td>
+            <td>2.2</td>
+            <td>2.3</td>
+            <td>2.4</td>
+            <td>2.5</td>
+        </tr>
+        <tr>
+            <td>3.1</td>
+            <td>3.2</td>
+            <td>3.3</td>
+            <td>3.4</td>
+            <td>3.5</td>
+        </tr>
+        <tr>
+            <td>4.1</td>
+            <td>4.2</td>
+            <td>4.3</td>
+            <td>4.4</td>
+            <td rowspan="2" valign="top">4.5</td>
+        </tr>
+        <tr>
+            <td>5.1</td>
+            <td>5.2</td>
+            <td>2.3</td>
+            <td>5.4</td>
+            <!-- <td>5.5</td> -->
+        </tr>
+    </table>
+
+
+</body>
+</html>

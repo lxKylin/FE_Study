@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象</title>
+    <script>
+        //利用构造函数创建四大天王的对象，相同的属性：姓名、年龄、性别、相同的方法
+        // function 构造函数名() {
+        //     this.属性 = 值;
+        //     this.方法 = function() {}
+        // }
+        //new 构造函数名();
+        function Star(name,age,sex) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+            this.sing = function(sang) {
+                console.log(sang);
+            }
+        }
+        //对象
+        var ldh = new Star('刘德华',18,'男');//调用函数返回的是一个对象
+        console.log(typeof ldh);
+        console.log(ldh.name);
+        console.log(ldh['sex']);
+        ldh.sing('冰雨');
+        var zxy = new Star('张学友',19,'男');
+        console.log(zxy.name);
+        zxy.sing('李香兰');
+        //构造函数名字首字母大写,
+        // 不需要return就可以返回结果，
+        // 我们调用构造函数，必须使用new
+        //我们只要new Star()，调用函数就创建一个对象 ldh{}
+        //我们的属性和方法前面必须添加this
+
+        function Mode(name,type,blood,attack) {
+            this.name = name;
+            this.type = type;
+            this.blood = blood;
+            this.attack = attack; 
+        }
+        let honor = new Mode('廉颇','战士','500血量','近程');
+        console.log(honor);
+        console.log(honor.name);
+        console.log(honor.type);
+        console.log(honor.blood);
+        console.log(honor.attack);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

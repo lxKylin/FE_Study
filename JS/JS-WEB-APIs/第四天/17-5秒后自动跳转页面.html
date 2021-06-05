@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>跳转</button>
+    <div></div>
+    <script>
+        let  btn = document.querySelector('button');
+        let div = document.querySelector('div');
+        let timer = 5;
+        
+        // setTimeout(function(){
+        //     location.href = 'http://www.baidu.com';
+        // },5000)
+        function time() {
+            if (timer == 0) {
+                location.href = 'http://www.baidu.com';
+            } else {
+                div.innerHTML = timer + '后跳转';
+                timer--;
+            }
+        }
+        time();// 先执行一遍函数，不然页面刷新时出现空白
+        setInterval(function(){
+            time();
+                
+        },1000)
+        btn.addEventListener('click',function(){
+            // console.log(location.href);
+            location.href = 'http://www.baidu.com';
+        })
+    </script>
+</body>
+</html>

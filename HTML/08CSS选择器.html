@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS选择器</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        h3{
+            color: aqua;
+            background: red;
+        }
+        #title {color: aquamarine;}
+        .title{color: beige;}
+        .phone{font-size: 30px;}
+        p.phone{color: blue;}
+        /* p[title]{color: blueviolet;} */
+        /* p[title="huawei"]{color: cadetblue;} */
+        /* p[title~="hua"]{color: cornflowerblue;} */
+        p[title|="hua"]{color: darkorange;}
+        a:link{color: red;}
+        a:visited{color: blue;}
+        a:hover{color: green;}
+        a:active{color: pink;}
+        span{color: dodgerblue;}
+        p span{color: gold;}
+        div{
+            color: lightskyblue;
+        }
+    </style>
+</head>
+<body>
+    <h2>通配符选择器</h2>
+    <!--是一种比较特殊的选择器，用“ * ”表示-->
+    <!--格式：*{property:value;......-->
+    <!--含义：可以选中页面中所有元素，对所有元素都生效-->
+    <!--用途：一般用于设置一些初始化的公共属性-->
+    <div style="background:yellow;">华为路由器</div>
+    <p>华为手机</p>
+    <ul>
+        <li>华为Mate40</li>
+    </ul>
+    <br>
+    <h2>元素/标签选择器</h2>
+    <!--使用某个HTML元素名作为选择器，是一种最简单的选择器-->
+    <!--格式：E{property:value;......-->
+    <h3>荣耀</h3>
+    <br>
+    <h2>id选择器</h2>
+    <!--id是指我们可以在HTML标签上设置一个id属性值-->
+    <!--id属性的特点：一个HTML文档，只能有唯一的一个-->
+    <!--格式：#id{property:value;....-->
+    <!--含义：可以选中页面中含有id属性值得元素-->
+    <!--id值不能数字开头及不能空格-->
+    <h4 id="title">我是h4</h4>
+    <br>
+    <h2>类选择器</h2>
+    <!--格式：.class {property:value;....-->
+    <!--类选择器中的类指的是class属性，有相同的class属性值的都会被选中-->
+    <!--class与id相比不具有唯一性-->
+    <!--class属性的值通常以字母开头中间不能有空格-->
+    <!--类选择器可以和元素选择器组合使用-->
+    <h4 class="title">华为5G</h4>
+    <div class="phone">P40</div>
+    <div class="phone">Mate40</div>
+    <p class="phone">nova</p>
+    <br>
+    <h2>属性选择器</h2>
+    <!--用于对具有某种属性的元素设置CSS样式-->
+    <!--格式：E[attribute]{property:value;.....}-->
+    <!--格式：E代表元素，[]代表元素的属性-->
+    <!--属性的种类-->
+    <!--[attribute]用于选取指定属性（attribute）的元素-->
+    <!--[attribute=value]用于选取指定属性（attribute）和指定属性值（value）的元素-->
+    <!--[attribute~=value]用于选取属性值中包含指定值的元素（单独的）-->
+    <!--[attribute|=value]用于选取以指定值为前缀的属性值的元素-->
+    <!-- <p title="huawei">华为云课堂</p> -->
+    <!-- <p title="huawei hua">华为云课堂</p> -->
+    <p title="hua-wei">华为云课堂</p>
+    <br>
+    <h2>伪类选择器</h2>
+    <!--伪类是指那些处在一定状态的元素-->
+    <!--伪类以冒号开头-->
+    <!--通过伪类来选中相应元素进而添加样式的选择器-->
+    <!--伪类名可以单独使用，也可以和其他选择器一起使用-->
+    <!--一般伪类选择器通常和元素名称一起使用，用于选中某一元素的伪类-->
+    <!--元素选择器和冒号之间不能有空格-->
+    <!--伪类选择器最喜欢和超链接（a元素）一起使用-->
+    <p>:link表示未被访问的链接</p>
+    <p>:visited表示已经被访问的链接</p>
+    <p>:hover鼠标经过链接上方时的状态</p>
+    <p>:active链接呗激活时的状态</p>
+    <a href="https://www.huawei.com">华为官网</a>
+    <br>
+    <h2>派生选择器</h2>
+    <p>后代选择器</p>
+    <!--后代选择器主要是用来选择某个元素的后代元素-->
+    <!--格式：父元素 子元素{property:value;....}-->
+    <!--父元素与子元素之间至少有一个空格，可以有很多空格-->
+    <div>华为荣耀:<span>HCIA认证</span></div>
+    <p>华为云:<span>HCIP认证</span></p>
+    <p>子元素选择器</p>
+    <!--格式：父元素>子元素{property:value;...}-->
+    <!--用来选择作为某一个元素子元素的元素-->
+    <!--与后代选择器的区别是后代选择器选的是所有子元素，而子元素选择器只选第一级子元素-->
+    <p>相邻兄弟选择器</p>
+    <!--格式：父元素+子元素{property:value;...}-->
+    <!--用来选择紧跟在一个元素之后的兄弟元素-->
+    <h2>选择器权重</h2>
+    <p>权重规则</p>
+    <p>通配符选择器的权重：0</p>
+    <p>标签选择器的权重：1</p>
+    <p>类、伪类、属性选择器的权重：10</p>
+    <p>id选择器的权重：100</p>
+    <p>内联样式的权重：100</p>
+    <p>特殊处理：!important（强制使用）</p>
+    <div>华为云课堂</div>
+
+
+</body>
+</html>

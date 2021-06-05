@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- vue学习不会出现 -->
+        <h2 v-text= "message + '!' ">vue学习</h2>
+        <!-- vue学习不会出现 -->
+        <h2 v-text= "info + '!'">vue学习</h2>
+        <!-- vue学习会出现 -->
+        <h2> {{ message + '!'}} vue学习 </h2>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: "v-text指令",
+                info: "学习前端开发",
+            }
+        })
+    </script>
+</body>
+</html>

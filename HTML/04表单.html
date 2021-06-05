@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单</title>
+</head>
+<body>
+    <h1>表单：最重要的数据交互功能</h1>
+    <div>与后端进行数据交互</div>
+    <br>
+    <h2>表单元素：</h2>
+    <!--使用<form>标签定义表单，表单有两个最重要的属性-->
+    <!--action属性，定义了表单提交的地址-->
+    <!--method属性，定义了表单提交的方式-->
+    <!--表单有两种提交方式，get和post-->
+    <!--其他表单控件元素必须放在form标签的内部-->
+    
+    <br>
+    <form action="https://www.huawei.com" method="get">
+        <div>你最喜欢哪一款华为手机?</div>
+        <div>
+            <input type="text" value="">
+        </div>
+        <div>
+            <input type="submit" value="提交" />
+            <input type="reset" value="重置" />
+        </div>
+        <!--分块-->
+    </form>
+    <br>
+    <h2>input</h2>
+    <!--input是一个单标签元素，其属性type代表了input的表单类型-->
+    <!--input标签就是通过type属性的不同取值来定义不同的表单控件-->
+    <div>单文本框：可以输入一行文本大表单控件</div>
+    <div>例：<input type="text"/></div>
+
+    <div>单选按钮：具有相同name属性的单选按钮只能选择一个</div>
+    <div>例：<input type="radio"/></div>
+
+    <div>多选按钮：可以选中多个的选择框</div>
+    <div>例：<input type="checkbox"/></div>
+
+    <div>按钮：普通按钮</div>
+    <div>例：<input type="button"/></div>
+
+    <div>提交按钮：会触发将表单数据提交到服务器的功能</div>
+    <div>例：<input type="submit"/></div>
+
+    <div>重置按钮：会清除表单中的所有数据，恢复表单中的原始值</div>
+    <div>例：<input type="reset"/></div>
+    
+    <div>文件上传按钮：用于文件上传</div>
+    <div>例：<input type="file"/></div>
+    <br>
+    <form action="https://www.huawei.com" method="get">
+        <!-- 表单提交地址 -->
+        <div>购买手机</div>
+        <div>用户名：<input type="text" name="user"/></div>
+        <div>密码：<input type="password" name="pwd" /></div><!--密码以点显示-->
+        <div>手机：<input type="radio" name="photo" id="P40" value="P40"/><label for="P40">P40</label> <input type="radio" name="photo" id="mate30" value="mate30"/><label for="mate30">mate30</label></div>
+        <!--name值相同，表示是一组的 ；<label>标签令点文字也可以选中-->
+        <div>配件：<input type="checkbox" name="part" id="w" value="无线耳机"/><label for="w">无线耳机</label> <input type="checkbox" name="part" id="c" value="充电宝"/><label for="c">充电宝</label></div>
+        <div><input type="submit" value="提交"></div><!--value按钮文案显示-->
+    </form>
+    <br>
+    <h2>select:主要用于下拉列表</h2>
+    <div>select用来定义列表；option用来定义列表项</div>
+    <br>
+    <div>请选择手机型号</div>
+    <select name="phone" id="s1" size="3" multiple><!--size的值表示能同时展示几行;加上multiple表示多选-->
+        <option value="001">P40</option>
+        <option value="002" selected>P40pro</option><!--加上selected表示默认选中-->
+        <option value="003">P40pro+</option>
+    </select>
+    <br>
+    <div>textarea标签:用来表示多行文本域</div>
+    <!--rows行 cols列-->
+    <textarea name="text" id="t1" cols="30" rows="10"></textarea>
+</body>
+</html>

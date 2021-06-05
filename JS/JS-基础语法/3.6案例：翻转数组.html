@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>翻转数组</title>
+    <script>
+        var arr = ['red','green','blue','pink','purple'];
+        var newArr = [];
+        //把旧数组索引号第4个取过来（arr.length-1),给新数组索引号第0个元素
+        for (var i = arr.length-1; i >= 0; i--) {
+            newArr[newArr.length] = arr[i];
+        }
+        console.log(newArr);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

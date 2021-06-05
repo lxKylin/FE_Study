@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <script>
+        console.log(location.search);
+        // 1.先去掉？ substr('起始的位置',截取几个字符)
+        let params = location.search.substring(1); 
+        console.log(params);
+        //2.利用=把字符串分割为数组 split('=')
+        let arr = params.split('=');
+        console.log(arr);
+        let div = document.querySelector('div');
+        div.innerHTML = arr[1] + '欢迎！';
+    </script>
+</body>
+</html>

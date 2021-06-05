@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="begin">开始计时</button>
+    <button class="stop">停止计时</button>
+    <script>
+        let begin = document.querySelector('.begin');
+        let stop = document.querySelector('.stop');
+        let timer = null; // 全局变量 null是一个空对象
+        begin.addEventListener('click',function(){
+            timer = setInterval(function(){
+                console.log('开始计时了');
+            },1000)
+        })
+        stop.addEventListener('click',function(){
+            clearInterval(timer);
+            console.log('计时停止了');
+        })
+    </script>
+</body>
+</html>

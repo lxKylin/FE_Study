@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //替换字符replace('被替换的字符','替换为的字符')
+        let str = 'andyandy';
+        console.log(str.replace('a','b'));
+        //有个字符串'abcodfoerohdosp' 要求把o替换成 *
+        let str1 = 'abcodfoerohdosp';
+        while (str1.indexOf('o') !== -1) {
+            
+            str1 = str1.replace('o','*');
+        }
+        console.log(str1);
+    </script>
+</body>
+</html>

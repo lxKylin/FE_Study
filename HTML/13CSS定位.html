@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS定位</title>
+    <style>
+        .pos1{
+            /* position: fixed;固定不动 */
+            background: yellow;
+            height: 100px;
+            width: 500px;
+        }
+        .box1{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            background: green;
+            position: relative;
+            left: 100px;/*居左100像素*/
+        }
+        .box3{
+            width: 100px;
+            height: 100px;
+            background: blue;
+        }
+        .phone1{
+            height: 100px;
+            background: red;
+        }
+        .phone2{
+            height: 100px;
+            background: green;
+            position: absolute;
+            z-index: 1;/*层级*/
+        }
+        .phone3{
+            height: 100px;
+            background: blue;
+            position: absolute;
+        }
+        .parent{
+            height: 300px;
+            background: yellow;
+            /* position: absolute; */
+            position: relative;
+            }
+        .child{
+            height: 100px;
+            width: 100px;
+            background: red;
+            position: absolute;
+            /* left: 50%; */
+            top: 0px;/*以整个页面为参考*/
+        }
+        .box{
+            padding: 50px;
+            background: pink;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>定位属性</h2>
+    <div>定位属性用于设置元素在页面中的位置</div>
+    <div>使用position属性来表示定位</div>
+    <div>它的值可以设置为：static、relative（相对定位）、absolute（绝对定位）、fixed（固定定位）</div>
+    <div>默认值为：static，表示标准流布局</div>
+    <h2>定位位置</h2>
+    <div>在使用定位属性定位元素位置的时候，可以指定上下左右四个属性来控制元素的位置</div>
+    <div>top用于设置元素定位时距离上部的偏移距离</div>
+    <div>bottom用于设置元素定位时距离下部的偏移距离</div>
+    <div>left用于设置元素定位时距离左侧的偏移距离</div>
+    <div>right用于设置元素定位时距离右侧的偏移距离</div>
+    <div>需要注意的是，偏移量可以为负值</div>
+    <h2>层级</h2>
+    <div>可以使用属性z-index设置定位元素的层级，值越大，显示时越是覆盖在其他元素的上边</div>
+    <div>z-index属性默认值为auto，代表层级与父元素相同</div>
+    <div>该元素只在position值为absolute时有效</div>
+    <br>
+    <div>华为云</div>
+    <span>牛</span>
+    <span>牛</span>
+    <span>牛</span>
+    <span>牛</span>
+    <div class="pos1">布局元素</div>
+    <h2>相对定位relative</h2>
+    <div>指元素相对于标准文档流中的默认位置来进行定位的</div>
+    <div>当position属性值设置为relative时，开启相对定位模式</div>
+    <div>相对定位并不会让元素脱离标准流</div>
+    <div>相对定位不会影响到周围其他元素的排布</div>
+    <div>实际使用时，相对定位一般都是和位置属性一起使用</div>
+    <div class="box1">华为云1</div>
+    <div class="box2">华为云2</div>
+    <div class="box3">华为云3</div>
+    <h2>绝对定位absolute</h2>
+    <div>相对于除static定位之外的第一个父元素进行定位，如果没有就相对于页面定位</div>
+    <div>把position属性值设置为absolute开启绝对定位模式</div>
+    <div>被设置为绝对定位的元素会脱离标准流</div>
+    <div>当多个绝对定位元素出现相互遮盖的情况时，可以使用z-index属性设置层级</div>
+    <h2>绝对定位和相对定位搭配使用</h2>
+    <!-- <div class="phone1">华为mate40</div>
+    <div class="phone2">华为mate30</div>
+    <div class="phone3">华为mate20</div> -->
+    <br>
+    
+    <div class="box">
+        <div class="parent">父元素
+            <div class="child">子元素</div>
+        </div>
+    </div>
+</body>
+</html>

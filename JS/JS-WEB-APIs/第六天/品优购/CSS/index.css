@@ -1,0 +1,19 @@
+.main {
+    width: 980px;
+    height: 455px;
+    background-color: aquamarine;
+    margin-left: 220px;
+    margin-top: 10px;
+}
+.focus {
+    float: left;
+    width: 721px;
+    height: 445px;
+    background-color: aqua;
+}
+.newsflash {
+    float: right;
+    width: 250px;
+    height: 445px;
+    background-color: antiquewhite;
+}

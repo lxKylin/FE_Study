@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            margin-left: 10px;
+            color: #fff;
+            font-size: 20px;
+            text-align: center;
+            line-height: 50px;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span class="hour">1</span>
+        <span class="minute">2</span>
+        <span class="second">3</span>
+    </div>
+    <script>
+        let hour = document.querySelector('.hour');
+        let minute = document.querySelector('.minute');
+        let second = document.querySelector('.second');
+        let inputTime = +new Date('2021-6-1 00:00:00');//返回的是用户输入时间总的毫秒数
+        function countDown() {
+            var nowTime = +new Date();//返回的是当前时间总的毫秒数
+            var times = (inputTime - nowTime) / 1000;//times是剩余时间总的毫秒数 1s=1000ms
+            var h = parseInt(times / 60 / 60 %24);//时
+            h = h < 10 ? '0' + h : h;
+            hour.innerHTML = h; //把剩余的小时给 黑色的小时盒子
+            var m = parseInt(times / 60 % 60);//分
+            m = m < 10 ? '0' + m : m;
+            minute.innerHTML = m;
+            var s = parseInt(times % 60);//当前秒数
+            s = s < 10 ? '0' + s : s;
+            second.innerHTML = s;
+        }
+        countDown();// 我们先调用一次这个函数，防止第一次刷新页面有空白
+        setInterval(countDown,1000);
+    </script>
+</body>
+</html>

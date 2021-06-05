@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //将超过2000的删除，剩余的放入新数组
+        var arr = [1500,1200,2000,2100,1800];
+        var newArr = [];
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] < 2000) {
+                // newArr[newArr.length] = arr[i];
+                newArr.push(arr[i]);
+            }
+        }
+        console.log(newArr);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

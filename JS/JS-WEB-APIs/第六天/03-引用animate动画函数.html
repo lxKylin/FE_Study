@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            position: absolute;
+            left: 0;
+            top: 100px;
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn500">到500</button>
+    <button class="btn800">到800</button>
+    <span></span>
+    <script src="./animate.js"></script>
+    <script>
+        let div = document.querySelector('div');
+        let span = document.querySelector('span');
+        let btn500 = document.querySelector('.btn500');
+        let btn800 = document.querySelector('.btn800');
+        btn500.addEventListener('click',function(){
+            animate(span,500,function(){
+                span.style.backgroundColor = 'red';
+            });
+        });
+        btn800.addEventListener('click',function(){
+            animate(span,800,function(){
+                span.style.backgroundColor = 'skyblue';
+            });
+        });
+        // 调用函数
+        animate(div,500);
+        // animate(span,300);
+        
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS盒模型</title>
+    <style>
+        .box {
+            padding: 50px;
+            border: 1px solid red;
+            margin: 50px;
+            font-size: 30px;
+        }
+        .box1 {
+            border: 1px solid red;
+            font-size: 30px;
+            /* padding-top: 10px;
+            padding-right: 20px;
+            padding-bottom: 30px;
+            padding-left: 40px; */
+            padding: 10px 20px 30px 40px;
+            /*有顺序：上右下左，不能乱；一个值时，代表都是一样；两个值时：代表上下及左右*/
+        }
+        .box2{
+            /* border-style: solid;线条样式多 */
+            /* border-width: 1px;thick加粗 */
+            /* border-color: red;  */
+            /* border-bottom: 5px red; */
+            border: 10px dashed #0000ff;
+            font-size: 30px;
+        }
+        .box3{
+            border: 1px solid #ff0000;
+            /* margin-top: 50px;
+            margin-right: 20px;
+            margin-bottom: 20px;
+            margin-left: 10px; */
+            /* margin: 10px 20px 30px 40px; */
+            margin: 50px auto;/*上下 左右*/
+            width: 200px;
+            font-size: 30px;
+        }
+        .box4{
+            border: 1px solid red;
+            margin: 20px;
+            font-size: 30px;
+        }
+        .box5{
+            border: 1px solid blue;
+            margin: 40px;
+            font-size: 30px;
+        }
+        .box6{
+            background: yellow;
+            font-size: 30px;
+            /* display: inline; */
+            /* display: inline-block; */
+        }
+        .box7{
+            background: blueviolet;
+            display: block;
+            font-size: 30px;
+        }
+        .box8{
+            border: 1px solid burlywood;
+            display: inline-block;
+            width: 200px;
+            height: 100px;
+            font-size: 30px;
+        }
+        .box9{
+            border: 1px solid rebeccapurple;
+            display: inline-block;
+            width: 200px;/*块级元素才能设置宽高*/
+            height: 100px;
+            font-size: 30px;
+        }
+        body{
+            font-size: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div>盒模型</div>
+    <div>所有的HTML元素都可以看作一个盒子模型，盒模型中主要用来对HTML元素进行布局时使用</div>
+    <div>盒模型的作用</div>
+    <div>浏览器在渲染页面的时候就会根据CSS盒模型的规则，将所有的HTML元素表示为一个矩形盒子，</div>
+    <div>之后CSS的相关属性就作用在这些盒子上，决定了盒子的大小位置和属性等，最终显示出来。</div>
+    <div>盒模型的构成</div>
+    <div>元素内容(content)、内边距(padding)、边框(border)、外边距(margin)</div>
+    <div class="box">华为云</div>
+    <br>
+    <div>内边距:padding</div>
+    <div>指在HTML元素内容和边框之间的区域，使用CSS属性padding来表示</div>
+    <div>属性值为长度值或者百分比,默认为0,注意取长度值时不能为负值,百分比值相当于父元素的长度比例</div>
+    <div>padding-top定义上内边距</div>
+    <div>padding-right定义右内边距</div>
+    <div>padding-bottom定义下内边距</div>
+    <div>padding-left定义左内边距</div>
+    <div>padding为简写属性</div>
+    <div class="box1">华为荣耀</div>
+    <br>
+    <div>边框:border</div>
+    <div>围绕元素内容和内边距的一条边线</div>
+    <div>样式：border属性代表边框，可以精准控制线的样式、宽度、颜色</div>
+    <div>border-style属性设置边框的样式属性，可以分别设置上下左右四条边框的样式属性</div>
+    <div>默认值为none，表示无边框；还可以设置多种样式：dotted、dashed、solid、double、groove、ridge、inset、outset等</div>
+    <div>宽度：使用border-width设置边框的宽度属性，和边框样式一样，可以分别设置上下左右四条的宽度</div>
+    <div>使用三种标准边框：thin、medium、thick;使用长度值作为宽度属性的属性值</div>
+    <div>颜色：使用border-color设置边框颜色，还可分别设置上下左右的颜色</div>
+    <div>复合属性：复合值一次使用多样式定义边框</div>
+    <div>可以使用border-top、border-right、border-bottom、border-left分别定义四条边框的所有属性，属性值是样式、宽度和颜色，其中宽度和颜色可省略</div>
+    <div>还可以直接使用border属性一次性对四条边框同时设置，属性值同样是样式、宽度和颜色，其中宽度和颜色可省略</div>
+    <div class="box2">华为笔记本</div>
+    <br>
+    <div>外边距:margin</div>
+    <div>外边距指元素边框之外的区域，设置外边距会在元素外围创建额外的空白空间，外边距的作用是控制元素和元素之间的距离</div>
+    <div>使用margin属性来设置外边距，还可以使用margin-top、margin-bottom、margin-left、margin-right分别控制元素不同方向的外边距</div>
+    <div>属性值可以是长度值或者百分比，如果为长度值，不能为负值；当使用margin简写属性时，取值的含义与padding相同</div>
+    <div>居中显示：margin左右属性值设为auto时，可以设置元素左右居中显示</div>
+    <div class="box3">CSS基础课程</div>
+    <div class="box4">职业</div>
+    <div class="box5">前端</div>
+    <br>
+    <div>display</div>
+    <div>display属性用于控制元素如何显示</div>
+    <div>当属性值为block时，会将元素以块级元素的方式显示</div>
+    <div>当属性值为inline时，会将元素以内联元素的方式显示</div>
+    <div>当属性值为inline-block时，会将元素以内联元素的方式显示,会同时具有这两个显示特性</div>
+    <div>当属性值为none时，元素将被隐藏</div>
+    <div class="box6">华为云</div>
+    <span class="box7">华为云</span>
+    <br>
+    <div class="box8">华为云1号</div>
+    <div class="box9">华为云2号</div>
+
+</body>
+</html>

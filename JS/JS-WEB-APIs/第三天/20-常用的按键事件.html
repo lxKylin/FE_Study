@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // keyup 按键弹起的时候触发
+        // document.onkeyup = function () {
+        //     console.log("触发了");
+        // }
+        document.addEventListener("keyup",function() {
+            console.log("我按下松开才触发啦");
+        })
+        // keydown 按键按下的时候触发
+        document.addEventListener("keydown",function() {
+            console.log("我按下就触发啦");
+        })
+        // keypress 按键按下的时候触发  但不识别功能按键如ctrl shift
+        document.addEventListener("keypress",function() {
+            console.log("我也是按下就触发了");
+        })
+    </script>
+</body>
+</html>

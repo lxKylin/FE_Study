@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS初体验</title>
+    <!-- 内嵌式的JS -->
+    <script>
+        // alert('沙漠骆驼')
+    </script>
+    <!-- 外部JS写法 -->
+    <script src="1.8JS.js"></script>
+    <script>
+        // 单行注释   ctrl+/
+        /* 多行注释   shift+alt+a,改ctrl+shift+/
+          多行注释 */
+          //这是一个输入框
+          var age1 = prompt('请输入您的年龄');
+          //alert弹出警示框，输出的 展示给用户的
+          alert('计算的结果是' + age1);
+          //console 控制台输出，给程序员测试用的
+          console.log('我是程序员能看到的');
+          //1.声明一个age变量
+          var age;
+          //2.赋值
+          age = 18;
+          //输出结果
+          console.log(age);
+          //4.变量初始化
+          var name ='liu';
+          console.log(name);
+          //检测获取字符串长度length
+          var str = 'my name is andy';
+          console.log(str.length);
+          //字符串的拼接+
+          console.log('沙漠'+'骆驼');
+        //   var age = 18;
+          console.log('刘'+age+'岁');
+          document.write("在body中显示");
+          console.log(12 * 2);
+     </script>
+     
+</head>
+<body>
+    <!-- <button onclick="alert('我是林友伟的父亲')">请点击有惊喜</button> -->
+    <!-- 行内式的JS，直接写到元素的内部（onclick属性中） -->
+    <!-- <input type="button" value="唐伯虎" onclick="alert('秋香')"> -->
+    <!--onclick点击，alter弹出框-->
+    <!-- <a href="javascript:alert('秋香')">唐伯虎</a> -->
+    
+</body>
+</html>

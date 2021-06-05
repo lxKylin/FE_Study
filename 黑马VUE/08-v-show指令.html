@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <img v-show = "true" src="./img/monkey.gif" alt="">
+        <input @click="changeIsShow" type="button" value="切换隐藏">
+        <img v-show = "isShow" src="./img/monkey.gif" alt="">
+        <input @click="addAge" type="button" value="切换隐藏">
+        <img v-show = "age>=21" src="./img/monkey.gif" alt="">
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                isShow: false,
+                age:18,
+            },
+            methods: {
+                changeIsShow:function() {
+                    this.isShow = !this.isShow;
+                },
+                addAge:function() {
+                    this.age++;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

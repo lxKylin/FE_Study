@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function getRandom(min, max) {//Math.random() 取值 [0,1)
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        //点名
+        let arr = ['林友伟','张三','李四','王五'];
+        console.log(arr[getRandom(0,arr.length - 1)]);
+
+        var random = getRandom(1, 10);
+        while(true) {//死循环
+            var num = prompt('请输入1~10之间的数');
+            if (num > random) {
+                alert('你猜大了');
+            }else if (num < random){
+                alert('你猜小了');
+            }else {
+                alert('恭喜猜对');
+                break;//退出循环
+            }
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

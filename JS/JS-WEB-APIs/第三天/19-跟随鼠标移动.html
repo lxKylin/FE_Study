@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <img src="./images/angel.gif" alt="">
+    <script>
+        let pic = document.querySelector('img');
+        document.addEventListener('mousemove',function(e){
+            // console.log(1);
+            //核心原理：每次鼠标移动，我们都会获得最新的鼠标坐标，把这个x和y坐标作为图片的top和left值就可以移动图片
+            let x = e.pageX;
+            let y = e.pageY;
+            // console.log(x,y);
+            //要给pic添加 px 单位
+            pic.style.top = x - 50 + 'px';
+            pic.style.left = y -40  + 'px';
+        })
+    </script>
+</body>
+</html>

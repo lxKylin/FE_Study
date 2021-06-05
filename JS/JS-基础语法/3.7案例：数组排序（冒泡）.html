@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组排序</title>
+    <script>
+        var arr = [5,4,3,2,1];
+        for (var i = 0; i <= arr.length-1; i++) {
+            for (var j = 0; j <= arr.length-i-1; j++) {
+                //内部交换两个变量的值，前一个和后面一个数组元素相比较
+                if (arr[j] > arr[j + 1]) {
+                    var temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+        console.log(arr);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

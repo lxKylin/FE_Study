@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            position: absolute;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }
+        span {
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <span></span>
+    <script>
+        // 简单动画函数封装 obj目标对象 target目标位置
+        function animate(obj, target) {
+            let clearDiv = setInterval(function(){
+            if (obj.offsetLeft >= target ) {
+                clearInterval(clearDiv);
+            }else {
+                obj.style.left = obj.offsetLeft + 1 + 'px';
+            }
+        },30)
+        }
+        let div = document.querySelector('div');
+        let span = document.querySelector('span');
+        // 调用函数
+        animate(div,500);
+        animate(span,300);
+        
+        
+    </script>
+</body>
+</html>

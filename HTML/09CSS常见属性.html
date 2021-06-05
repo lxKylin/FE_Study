@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS常见属性</title>
+    <style>
+        .text1{
+            /*衬线字体，花哨*/
+            font-family: serif;
+            font-size: 25px;
+            font-style: italic;
+            font-weight: bold;
+        }
+        .text2{
+            /* 非衬线字体,用于正文 */
+            font-family: sans-serif;
+            font-size: 30px;
+        }
+        .text3{
+            /* 等宽字体 */
+            font-family: monospace;
+        }
+        .text4{
+            font: italic  bold 30px serif;
+            text-align: center;
+        }
+        .text5{
+            color: red;/*#ff0000*/
+            line-height: 50px;
+            /* text-align: center; */
+            /* direction: rtl; */
+            text-indent: 50px;
+            text-decoration: overline;
+            letter-spacing: 10px;
+            text-shadow: 10px 10px 5px yellow;
+        }
+        .text6{
+            background: yellow;
+            width: 500px;
+            min-width: 1000px;
+            height: 100px;
+        }
+        .list1{
+            list-style-image: url("../图片/P40.jpg"); 
+            list-style-position: inside;
+            list-style-type: square;
+        }
+        .list2{
+            list-style-type: decimal;
+        }
+        .bak{
+            height: 1800px;
+            /* background-color: red; */
+            background-image: url("../图片/狙击.jpg");
+            background-repeat: no-repeat;
+            background-position: right center;
+            background-attachment: scroll;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>字体</h2>
+    <div class="text1">使用font-family属性来定义文字的字体</div>
+    <div class="text2">属性值为字体的名称，可以设置多个字体名称，浏览器会按顺序使用它第一个支持的字体</div>
+    <br>
+    <h2>字体尺寸</h2>
+    <div class="text3">使用font-size属性来定义文字的尺寸</div>
+    <div>属性值为长度值，例如：30px,也可以使用百分比，50%</div>
+    <br>
+    <h2>字体样式</h2>
+    <div class="text1">使用font-style属性设置文字为斜体</div>
+    <div>默认属性值为normal显示标准效果</div>
+    <div>当属性值为italic时显示倾斜效果</div>
+    <br>
+    <h2>字体粗细</h2>
+    <div class="text1">使用font-weight属性设置文字的粗细</div>
+    <div>默认值为normal,相当于400，显示效果为正常粗细</div>
+    <div>当属性值为bold时，相当于700，显示为粗体</div>
+    <div>当属性值为bolder时，显示更粗</div>
+    <div>当属性值为lighter时，显示更细</div>
+    <div>也可以设置属性值为一个具体数值100/200/300.。</div>
+    <br>
+    <h2>简写属性</h2>
+    <div class="text4">使用font属性来定义所有文字的样式</div>
+    <div>各个属性值用空格分隔</div>
+    <div>font=font-family+font-size+font-style+font-weight</div>
+    <br>
+    <h2>文本</h2>
+    <div class="text5">颜色：使用color属性来设置文本颜色，属性值可以是颜色名、十六进制颜色值、RGB颜色值</div>
+    <div class="text5">行高：使用line-height属性来设置文本行高，默认值为：normal,其他属性值为长度值、百分比</div>
+    <div class="text5">对齐方式：使用text-align属性来设置，属性值有：left（左）、right（右）、center（中）</div>
+    <div class="text5">方向：使用direction属性设置文本的方向，属性值有：ltr(左)、rtl(右)，注意与对齐方式属性的区别</div>
+    <div class="text5">缩进：使用text-indent属性设置段落的首行缩进，默认值为0，其他属性值有：长度值、百分比</div>
+    <div class="text5">装饰线：使用text-decoration属性设置，属性值有：underline(下划线)、overline(上划线)、line-through(中划线)，默认值为none，表示没有</div>
+    <div class="text5">间隔：使用letter-spacing属性设置文本字符间隔的大小，属性值为长度值，可为负值</div>
+    <div class="text5">阴影：使用text-shadow属性来设置文本的阴影，属性值为：X轴偏移量+Y轴偏移量+模糊距离+颜色</div>
+    <br>
+    <h2>尺寸</h2>
+    <div class="text6">宽度和高度：width属性定义宽度，height属性定义高度，属性值为：auto、长度、百分比</div>
+    <div>最小宽度和最小高度：min-width属性定义最小宽度，min-height属性定义最小高度</div>
+    <div>最大宽度和最大高度：max-width属性定义最大宽度，max-height属性定义最大高度</div>
+    <br>
+    <h2>列表</h2>
+    <div>list-style-image：用于指定一个图片做为列表项前面的标记；默认值为none；可以设置一个图片的url作为标记图片</div>
+    <div>list-style-position：用于设置在什么位置显示列表项前面的标记；默认值为outside；还可以设置为inside</div>
+    <div>list-style-type：用于设置列表项前面图标的类型；默认值为disc，其他值：circle\square\decimal\none\low-alpha\upper-alpha</div>
+    <div>list-style：简写属性；list-style=list-style-image+list-style-position+list-style-type</div>
+    <ul>
+        <li>华为手机</li>
+        <li>华为笔记本</li>
+        <li>华为电视</li>
+    </ul>
+    <ul class="list1">
+        <li>华为手机</li>
+        <li>华为笔记本</li>
+        <li>华为电视</li>
+    </ul>
+    <ul class="list2">
+        <li>华为手机</li>
+        <li>华为笔记本</li>
+        <li>华为电视</li>
+    </ul>
+    <br>
+    <h2>背景</h2>
+    <div>1、background-color:用来设置元素的背景颜色，默认值为：transparent</div>
+    <div>2、background-image:通用来设置元素的背景图片，默认值为：none，还可以设置一个图片的url地址，用来作为背景图片</div>
+    <div class="bak"></div>
+    <div>3、background-repeat:主要用来配合background-image属性一起使用，用来设置背景图片的平铺方式</div>
+    <div>默认值为：repeat，表示将背景图片在x轴和y轴方向平铺显示，还可以设置为沿x轴平铺(repeat-x)、沿y轴平铺(repeat-y)、不平铺(no-repeat)</div>
+    <div>4、background-position:也是用来配合background-image属性一起使用，用来设置背景图片的起始点位置</div>
+    <div>默认为左上角零点位置，位置参数：x轴方向left、center、right;y轴方向top、center、bottom</div>
+    <div>百分比：x轴位置x%、y轴位置y%；长度：x轴离原点长度、y轴离原点长度</div>
+    <div>5、background-attachment:用于设置背景图片固定或者跟随页面滚动，默认值：scroll，还可以设置为fixed</div>
+    <div>6、background:简写属性</div>
+
+
+
+</body>
+</html>

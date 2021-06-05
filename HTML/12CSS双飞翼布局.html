@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS浮动案例</title>
+    <style>
+        .container{
+            border: 1px solid red;
+            width: 800px;
+            margin: 0px auto;
+            overflow: hidden;
+        }
+        .center{
+            float: left;
+            background: yellow;
+            width: 100%;
+        }
+        .left{
+            float: left;
+            background: green;
+            width: 200px;
+            margin-left: -100%;
+        }
+        .right{
+            float: left;
+            background: pink;
+            width: 200px;
+            margin-left: -200px;
+        }
+        .content{
+            margin: 0px 200px;
+            /*上下为0，左右为200*/
+        }
+
+    </style>
+</head>
+<body>
+    <h2>1、如何实现一个三列布局</h2>
+    <div>实现一个左中右布局；左右两侧宽度固定；中间内容区宽度能够自适应</div>
+    <h2>2、双飞翼布局</h2>
+    <div>第一步：使用float属性让左中右三列浮动</div>
+    <div>第二步：使用负margin属性让左右两列处于同一水平线上</div>
+    <div>第三部：在中间列中添加一个div内容元素，设置margin值为左右两列的宽度</div>
+    <div>最后，别忘了清除浮动，让父元素高度正常显示</div>
+    <div class="container">
+        <div class="center">
+            <div class="content">华为云</div>
+            <!--中间宽度自适应-->
+        </div>
+        <div class="left">left</div>
+        <div class="right">right</div>
+    </div>
+    <div>优点</div>
+    <div>中间内容列宽度自适应</div>
+    <div>中间内容区域先加载</div>
+    <div>使用浮动布局</div>
+    <div>巧妙使用负margin属性保持三列水平</div>
+    <div>方法简单直接，浏览器兼容性好</div>
+</body>
+</html>

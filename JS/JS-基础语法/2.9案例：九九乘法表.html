@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九九乘法表</title>
+    <script>
+        // var str = '';
+        // for (var i =1; i <= 9; i++){
+        //     for (var j = 1; j <= i; j++){
+        //         //1 × 2 = 2
+        //         str = str + j + '×' + i + '=' + i*j + '\t';
+        //     }
+        //     str = str + '\n';
+        // }
+        // console.log(str);
+        //定义变量存储用户名
+        var userName = prompt("请输入用户名");
+        //定义变量存储密码
+        var passWord = prompt("请输入密码");
+        //补全while循环，要求：
+        //用户名为”admin“，密码为”123456“，则提示用户登录成功！否则，让用户一直输入
+        while (userName !== 'admin' && passWord !== '123456') {
+            var userName = prompt("请输入用户名");
+            var passWord = prompt("请输入密码");
+        }
+        alert("用户登录成功！");
+        
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
