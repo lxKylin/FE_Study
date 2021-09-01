@@ -12,7 +12,7 @@
 // console.log(urlToObj('https://www.baidu.com/?ie=utf-8&f=3&rsv_bp=1&tn=baidu&wd=%E7%99%BE%E5%BA%A6'))
 // //{ie: "utf-8", f: "3", rsv_bp: "1", tn: "baidu", wd: "%E7%99%BE%E5%BA%A6"}
 
-function fenG(str) {
+function urlToObj(str) {
   let obj = {}
   let arr = str.split('?')[1].split('&')
   for (let i = 0; i < arr.length; i++) {
@@ -21,4 +21,4 @@ function fenG(str) {
   }
   return obj
 }
-console.log(fenG("www.baidu.com?a=1&b=2&c=3"))
+console.log(urlToObj("www.baidu.com?a=1&b=2&c=3"))
