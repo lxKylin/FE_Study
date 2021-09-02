@@ -4,8 +4,10 @@ function debounce(fn, delay = 300) {
     clearTimeout(timer)
   }
   return function() {
+    let context = this
+    let args = arguments
     timer = setTimeout(() => {
-      fn.apply(this, argument)
+      fn.apply(context, args)
       timer = null
     }, delay)
   }
