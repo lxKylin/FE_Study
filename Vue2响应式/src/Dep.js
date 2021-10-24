@@ -1,32 +1,37 @@
 var uid = 0;
+// 发布订阅模式 依赖收集 管理依赖 每个Observer的实例成员中都有一个Dep的实例
 export default class Dep {
-    constructor() {
-        console.log('我是DEP类的构造器');
-        this.id = uid++;
+  constructor() {
+    console.log('我是DEP类的构造器');
+    this.id = uid++;
 
-        // 用数组存储自己的订阅者。subs是英语subscribes订阅者的意思。
-        // 这个数组里面放的是Watcher的实例
-        this.subs = [];
+    // 用数组存储自己的订阅者。subs是英语subscribes订阅者的意思。
+    // 这个数组里面放的是Watcher的实例
+    this.subs = [];
+  }
+
+  // 添加订阅
+  addSub(sub) {
+    this.subs.push(sub);
+  }
+
+  // 添加依赖
+  depend() {
+    // Dep.target就是一个我们自己指定的全局的位置，你用window.target也行，只要是全剧唯一，没有歧义就行
+    if (Dep.target) {
+      this.addSub(Dep.target);
     }
-    // 添加订阅
-    addSub(sub) {
-        this.subs.push(sub);
+  }
+
+  // 通知更新
+  notify() {
+    console.log('我是notify');
+    // 浅拷贝一份
+    const subs = this.subs.slice();
+    // const subs = [...this.subs];
+    // 遍历
+    for (let i = 0, l = subs.length; i < l; i++) {
+      subs[i].update();
     }
-    // 添加依赖
-    depend() {
-        // Dep.target就是一个我们自己指定的全局的位置，你用window.target也行，只要是全剧唯一，没有歧义就行
-        if (Dep.target) {
-            this.addSub(Dep.target);
-        }
-    }
-    // 通知更新
-    notify() {
-        console.log('我是notify');
-        // 浅克隆一份
-        const subs = this.subs.slice();
-        // 遍历
-        for (let i = 0, l = subs.length; i < l; i++) {
-            subs[i].update();
-        }
-    }
+  }
 };
