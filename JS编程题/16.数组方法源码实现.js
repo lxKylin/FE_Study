@@ -2,9 +2,22 @@ Array.prototype.myForEach = function (fn) {
   if (!fn) throw new TypeError('undefined is not a function');
   if (typeof fn !== 'function') throw new TypeError('fn is not a function');
   for (let i = 0; i < this.length; i++) {
-    fn(this[i], i, this)
+    // fn(this[i], i, this)
+    if (i in this) {
+      fn(this[i], i, this)
+    }
   }
 }
+// 这个时候res中的元素不是 undefined 也不是 null 是empty 这个也是不会去执行的，所以需要改成
+// if (i in this) {
+//   fn(this[i], i, this)
+// }
+
+// 创建了长度为10的数组
+let res = new Array(10)
+res.myForEach(i => {
+  console.log(i, 1)
+})
 
 Array.prototype.myMap = function (fn) {
   if (!fn) throw new TypeError('undefined is not a function');
