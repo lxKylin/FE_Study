@@ -2,10 +2,12 @@ class EventEmitter {
   constructor() {
     // 初始化一个存放订阅的数组
     // this.list = [];
+
+    // 1.在constructor里初始化，用对象来存放数组
     this.list = {};
   }
 
-  // 订阅者
+  // 2.实现一个订阅者 
   on(name, fun) {
     // this.list.push({name, fun})
 
@@ -15,7 +17,7 @@ class EventEmitter {
     this.list[name].push(fun)
   }
 
-  // 发布者
+  // 3.实现一个发布者
   emit(name, ...params) {
     // for (let index in this.list) {
     //   if (this.list[index].name === name) {
@@ -28,7 +30,7 @@ class EventEmitter {
     }
   }
 
-  // 删除一个订阅者
+  // 4.实现删除一个订阅者
   off(name) {
     // for (let index in this.list) {
     //   if (this.list[index].name === name) {
@@ -48,6 +50,7 @@ class EventEmitter {
   }
 }
 
+// 5.使用new 来调用这个类
 let lx = new EventEmitter()
 let xxx = new EventEmitter()
 
