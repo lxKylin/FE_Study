@@ -1,0 +1,20 @@
+{
+  "name": "learn-pinia",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "pinia": "^2.0.9",
+    "vue": "^3.2.16"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.12",
+    "@vitejs/plugin-vue": "^1.9.3",
+    "typescript": "^4.4.3",
+    "vite": "^2.6.4",
+    "vue-tsc": "^0.3.0"
+  }
+}
