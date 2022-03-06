@@ -103,13 +103,14 @@
 //  1.使用fs核心模块
 var fs = require('fs');
 
-// 2.读取文件
+// 2.读取文件 以./或../开头的相对路径可能会造成路径错误
+// 提供完整路径即可解决 __dirname当前路径所在目录
 fs.readFile('./data/a.txt',function(err,data){
    if(err){
-        console.log('文件读取失败');
+      console.log('文件读取失败');
    }
     else{
-         console.log(data.toString());
+      console.log(data.toString());
     }
 })
 ```
@@ -123,12 +124,24 @@ var fs = require('fs');
 // 2.将数据写入文件
 fs.writeFile('./data/a.txt','我是文件写入的信息',function(err,data){
    if(err){
-        console.log('文件写入失败');
+      console.log('文件写入失败');
    }
     else{
-         console.log(data.toString());
+      console.log(data.toString());
     }
 })
+```
+
+## path路径模块
+`path.join()`方法，用来将多个路径片段拼接成一个完整的路径字符串
+
+
+```js
+const path = require('path');
+
+const pathStr = path.join('/a', '/b/c', '../', './d', 'e')
+console.log(pathStr) // /a/b/d/e
+
 ```
 
 ## http
@@ -155,7 +168,7 @@ server.on('request',function(){
 
 // 4.绑定端口号，启动服务
 server.listen(3000,function(){
-    console.log('runing...')
+  console.log('runing...')
 })
 
 ```
