@@ -69,6 +69,8 @@ vue2.x 响应式是通过 **数据劫持** 结合 **发布订阅模式**的方�
 - **实现一个订阅者 Watcher**：负责订阅数据的变化，当数据发生变化时，触发对应的更新函数。
 - **实现一个发布者Dep**：采用发布-订阅模式，来收集订阅者 Watcher，对监听器 Observer 和 订 阅者 Watcher 进行统一管理。
 
+![响应式实现步骤](https://cdn.nlark.com/yuque/0/2022/jpeg/23115285/1646543265580-2e7655e4-0610-413a-b31a-db15b544e509.jpeg?x-oss-process=image%2Fresize%2Cw_750%2Climit_0)
+
 #### 6.2.数组响应式如何实现
 
 实际上 ` Object.defineproperty ` 不能监听数组变化

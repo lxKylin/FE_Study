@@ -50,7 +50,8 @@ A();
   - B执行完 出栈。
   - A执行完 出栈。
 
-![image-20211031101153558](E:\Program Files\typora\images\image-20211031101153558.png)
+![函数执行过程](https://cdn.nlark.com/yuque/0/2022/jpeg/23115285/1646543261031-d71b910f-00f7-44c2-86c3-b504e68b9e06.jpeg)
+
 
 #### null和undefined的区别
 
