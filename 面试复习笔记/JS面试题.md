@@ -1,7 +1,7 @@
 ### 0.介绍一下js的数据类型有哪些，值是如何存储的
 
 - 8种数据类型
-- **7种基本(原始)数据类型**：Null、Underfined、String、Boolean、Number、Symbol、BigInt
+- **7种基本(原始)数据类型**：Null、Undefined、String、Boolean、Number、Symbol、BigInt
 - String、Boolean、Number，具有包装类型，可以和引用类型一样调用方法
 
 ```js
@@ -56,10 +56,10 @@ A();
 #### null和undefined的区别
 
 ```js
-console.log(null==undefined);    //true  因为两者都默认转换成了false
+console.log(null == undefined);    //true  因为两者都默认转换成了false
 console.log(typeof undefined);    //"undefined"  
 console.log(typeof null);       //"object"  
-console.log(null===undefined);    //false   "==="表示绝对相等，null和undefined类型是不一样的，所以输出“false”
+console.log(null === undefined);    //false   "==="表示绝对相等，null和undefined类型是不一样的，所以输出“false”
 ```
 
 - `null`**表示没有对象，即该处不应该有值**

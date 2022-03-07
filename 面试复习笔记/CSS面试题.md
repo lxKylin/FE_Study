@@ -174,7 +174,7 @@
 }
 ```
 
-​      方法二：通过设置 `height` 和 `line-height` 一致达到垂直居中：
+​  方法二：通过设置 `height` 和 `line-height` 一致达到垂直居中：
 
 ```css
 .single-line {
