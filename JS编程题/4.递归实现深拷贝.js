@@ -18,3 +18,17 @@ function cloneDeep(obj){
   }    
   return newObj;    //函数必须有返回值，否则结构为undefined
 }
+
+// test
+let obj = {
+  a: '1',
+  b: '2'
+}
+
+let newObj = cloneDeep(obj)
+console.log(newObj)
+
+newObj.a = '3'
+console.log(newObj)
+
+console.log(obj == newObj)
