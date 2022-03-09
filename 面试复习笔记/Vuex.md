@@ -10,11 +10,11 @@
 
 ### 3.多页面状态管理(五个核心)
 
-- ` state`：存放数据，` $store.state.`
-- ` getters`：处理数据，` $store.getter.`
-- ` mutations`：修改同步数据，` this.$store.commit()`
-- ` actions`：修改异步数据，` this.$store.dispath()`
-- ` modules`：模块，` $store.state.模块名.`，只有state的方法需要加上模块名
+- `state`：存放数据，`$store.state.`
+- `getters`：处理数据，`$store.getter.`
+- `mutations`：修改同步数据，`this.$store.commit()`
+- `actions`：修改异步数据，`this.$store.dispath()`
+- `modules`：模块，`$store.state.模块名.`，只有state的方法需要加上模块名
 
 ```js
 import Vue from "vue";
@@ -66,11 +66,11 @@ const store = new Vuex.Store({
 export default store
 ```
 
-#### 3.1通过` this.$store.state.属性`的方式访问状态
+#### 3.1通过`this.$store.state.属性`的方式访问状态
 
 #### 3.2Mutation中的方法必须是同步方法
 
-- 通过` this.$store.commit('mutation中的方法')`来修改状态
+- 通过`this.$store.commit('mutation中的方法')`来修改状态
 
 - 修改状态不能直接去修改state，要经过Action/Mutations去修改，否则不能跟踪状态的变化
 

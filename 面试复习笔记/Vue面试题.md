@@ -4,9 +4,9 @@ vue是一套用于构建用户界面的渐进式框架，相当于view层, 可�
 
 ### 2.与React的区别
 
-React采用特殊的JSX语法，Vue在组件开发中使用` .vue`特殊文件格式；中心思想相同：都是使用组件，组件实例之间可以嵌套；都不内置AJAX，Route等功能到核心包，而是以插件的方式加载；在组件开发中都支持mixins的特性。
+React采用特殊的JSX语法，Vue在组件开发中使用`.vue`特殊文件格式；中心思想相同：都是使用组件，组件实例之间可以嵌套；都不内置AJAX，Route等功能到核心包，而是以插件的方式加载；在组件开发中都支持mixins的特性。
 
-`Vue` 借鉴了` angular` 的模板和数据绑定技术，又借鉴了` react` 的组件化和虚拟` DOM` 技术
+`Vue` 借鉴了`angular` 的模板和数据绑定技术，又借鉴了`react` 的组件化和虚拟`DOM` 技术
 
 ### 3.生命周期
 
@@ -32,7 +32,7 @@ React采用特殊的JSX语法，Vue在组件开发中使用` .vue`特殊文件�
 #### nextTick的实现原理
 
 - 涉及事件循环
-- vue进行DOM更新内部是调用nextTick来做异步队列控制。而当我们自己调用nextTick的时候，它就在更新DOM的那个微任务后追加了回调函数，从而确保我们的代码在DOM更新后执行
+- vue进行DOM更新，内部是调用nextTick来做异步队列控制。而当我们自己调用nextTick的时候，它就在更新DOM的那个微任务后追加了回调函数，从而确保我们的代码在DOM更新后执行
 
 ### 5.MVVM与MVC
 
@@ -60,11 +60,11 @@ React采用特殊的JSX语法，Vue在组件开发中使用` .vue`特殊文件�
 
 vue2.x 响应式是通过 **数据劫持** 结合 **发布订阅模式**的方式来实现的， 
 
-- **采用数据劫持结合发布-订阅模式，通过 ` Object.defineproperty `来劫持各个属性的 setter，getter，当数据变动时，发布消息给订阅者，会触发响应的监听回调。**
+- **采用数据劫持结合发布-订阅模式，通过 `Object.defineProperty`来劫持各个属性的 setter，getter，当数据变动时，发布消息给订阅者，会触发响应的监听回调。**
 
 #### 6.1响应式实现步骤
 
-- **实现一个监听器 Observer**：利用  ` Object.defineproperty ` 劫持(监听)各个属性的setter 和 getter。数据变动时，就能监听到数据变化。
+- **实现一个监听器 Observer**：利用  `Object.defineProperty` 劫持(监听)各个属性的setter 和 getter。数据变动时，就能监听到数据变化。
 - **实现一个解析器 Compile**：解析 Vue 模板指令，将模板中的变量都转成数据，然后初始化渲染页面，并给每个指令对应的节点绑定更新函数；添加监听数据的订阅者，一旦数据有变动，调用更新函数进行数据更新。
 - **实现一个订阅者 Watcher**：负责订阅数据的变化，当数据发生变化时，触发对应的更新函数。
 - **实现一个发布者Dep**：采用发布-订阅模式，来收集订阅者 Watcher，对监听器 Observer 和 订 阅者 Watcher 进行统一管理。
@@ -73,12 +73,12 @@ vue2.x 响应式是通过 **数据劫持** 结合 **发布订阅模式**的方�
 
 #### 6.2.数组响应式如何实现
 
-实际上 ` Object.defineproperty ` 不能监听数组变化
+实际上 `Object.defineProperty` 不能监听数组变化
 
-- 以` Array.prototype`为原型创建` arrayMethods`对象
+- 以`Array.prototype`为原型创建`arrayMethods`对象
 - 遍历那7个响应式数组的方法，在方法原有功能上，**额外添加通知更新(notify)操作**
 - 有三种方法push\unshift\splice能够插入新项，现在要把插入的新项也要变为响应式的
-- 使用` Object.setPrototypeOf()`将数组的` __proto__`指向` arrayMethods`对象  
+- 使用`Object.setPrototypeOf()`将数组的`__proto__`指向`arrayMethods`对象  
 
 ### 7.**vue组件中的data为什么是函数**
 
@@ -113,12 +113,12 @@ vue2.x 响应式是通过 **数据劫持** 结合 **发布订阅模式**的方�
 
 ### 11.Vue组件通信方式
 
-- ` props` 和` $emit `：父组件向子组件传递数据是通过 ` prop` 传递的，子组件传递数据给父组件是通过` $emit` 触发事件来做到的
-- ` $parent`,` $children` 获取当前组件的父组件和子组件
-- ` provide`和` inject`祖孙组件
+- `props` 和`$emit`：父组件向子组件传递数据是通过 `prop` 传递的，子组件传递数据给父组件是通过`$emit` 触发事件来做到的
+- `$parent`,`$children` 获取当前组件的父组件和子组件
+- `provide`和`inject`祖孙组件
   - 一个定义，另一个接收
-- ` $refs `获取组件实例
-- ` eventBus` 兄弟组件数据传递 ，这种情况下可以使用事件总线的方式
+- `$refs`获取组件实例
+- `eventBus` 兄弟组件数据传递 ，这种情况下可以使用事件总线的方式
 - vuex状态管理
 
 ### 12.虚拟DOM是什么？有什么优缺点？

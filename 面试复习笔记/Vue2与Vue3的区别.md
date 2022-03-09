@@ -57,7 +57,7 @@ export default defineComponent({
 - 使用生命周期都需要从vue中导入，需要加上“on”
 - setup在beforeCreate之前执行
 
-![image-20211005102218332](C:\Users\11594\AppData\Roaming\Typora\typora-user-images\image-20211005102218332.png)
+![vue2和vue3生命周期](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3eadd1ec0ac94343951ae2453cf41fce~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp)
 
 #### 1.4.响应式侦听watch 与 watchEffect 的用法
 
@@ -132,21 +132,21 @@ export default defineComponent({
 
 ### 3.简单对比vue2.x 与 vue3.x 响应式
 
-- `Object.defineProperty`只能劫持对象的属性， 而 Proxy 是直接代理对象
+- `Object.defineProperty`只能劫持对象的属性， 而 `Proxy` 是直接代理对象
   - `Object.defineProperty`只能劫持对象属性，需要遍历对象的每一个属性，如果属性值也是对象，就需要递归进行深度遍历。
-  - Proxy 直接代理对象， 不需要遍历操作
+  - `Proxy` 直接代理对象， 不需要遍历操作
 - `Object.defineProperty`只对初始对象里的属性有监听作用，对新增属性需要手动进行`Observe`
   - `Object.defineProperty`劫持的是对象的属性，所以新增属性时，需要重新遍历对象， 对其新增属性再次使用`Object.defineProperty`进行劫持。
-  - 而Proxy不仅对初始对象的属性有监听作用，对新增的也有
+  - 而`Proxy`不仅对初始对象的属性有监听作用，对新增的也有
 
 ### Vue3.2新特性
 
-- ` script setup`
+- `script setup`
   - 不需要写`return`
-- 没有了` setup`函数，提供了三个新的API
-  - ` defineProps`用来接收父组件传来的值` props`
-  - ` defineEmit`用来声明触发的事件表
-  - ` useContext`用来获取组件的上下文` context`
+- 没有了`setup`函数，提供了三个新的API
+  - `defineProps`用来接收父组件传来的值`props`
+  - `defineEmit`用来声明触发的事件表
+  - `useContext`用来获取组件的上下文`context`
 
 ### slot插槽用法变更
 

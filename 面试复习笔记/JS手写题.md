@@ -39,7 +39,7 @@ const unique5 = arr => {
 }
 ```
 
-#### 1.4使用fliter
+#### 1.4使用filter
 
 ```js
 const unique4 = arr => {

@@ -63,8 +63,8 @@ new Promise((resolve, reject) => {
 ### 3.Promise链式调用：即`then`方法后面再调用另一个`then`方法
 
 - 无论是then还是catch都可以返回一个Promise对象
-- ` Promise.resolve()`将数据包装成Promise对象，并且在内部回调resolve()
-- ` Promise.reject()`将数据包装成Promise对象，并且在内部回调reject()
+- `Promise.resolve()`将数据包装成Promise对象，并且在内部回调resolve()
+- `Promise.reject()`将数据包装成Promise对象，并且在内部回调reject()
 
 ```js
 new Promise((resolve, reject) => {

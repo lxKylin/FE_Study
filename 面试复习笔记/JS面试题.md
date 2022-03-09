@@ -289,7 +289,7 @@ function cloneDeep(obj) {
   - 除了length属性和索引元素之外没有任何`Array`属性，方法
 
 - **argument对象转数组**
-
+  - Array.from() 方法对一个**类数组**或**可迭代对象**创建一个新的，浅拷贝的数组实例。
   ```js
   var args = Array.prototype.slice.call(arguments)
   var args = [].slice.call(arguments);
@@ -306,16 +306,20 @@ function cloneDeep(obj) {
 - 构造函数中，this指向new出来的那个新的对象；
 - call、apply、bind中的this被强绑定在指定的那个对象上；
 
-- 箭头函数没有` this`，它的` this`指向函数定义位置的上下文` this`
+- 箭头函数没有`this`，它的`this`指向函数定义位置的上下文`this`
 
 ### 9.原型与原型链
+- https://github.com/mqyqingfeng/Blog/issues/2
 
 - 每个**函数对象**都有一个`prototype` 属性，这个属性是**从一个函数指向一个对象**，指向的是**原型对象**
-  - ` prototype`是函数独有的
-- **对象**身上系统会自己添加一个` __proto__`(隐式原型)指向我们构造函数的原型对象` prototype`，之后就可以使用原型对象上的方法
-  - ` __proto__`，` constructor`(构造器)是对象独有的(函数也是个对象)
+  - **原型**：每一个JavaScript对象(null除外)在创建的时候就会与之关联另一个对象，这个对象就是我们所说的原型，每一个对象都会从原型"继承"属性
+  - `prototype`是函数独有的
+- **对象**身上系统会自己添加一个`__proto__`(隐式原型)指向我们构造函数的原型对象`prototype`，之后就可以使用原型对象上的方法
+  - `__proto__`，`constructor`(构造器)是对象独有的(函数也是个对象)
 - 当我们访问一个对象的属性时，如果这个对象内部不存在这个属性，那么它就会去它的原型对象里找这个属性，这个原型对象又会有自己的原型，于是就这样一直找下去，也就是**原型链**
-- 原型链的终点是` null`
+- 原型链的终点是`null`
+
+![原型与原型链](https://cdn.nlark.com/yuque/0/2022/png/23115285/1646702726348-25386d82-b647-49e5-834b-db5862cb7f2c.png)
 
 ### 10.浏览器三种事件模型
 
@@ -324,9 +328,9 @@ function cloneDeep(obj) {
 - IE事件模型
   - 该事件模型中，一次事件共有**两**个过程，**事件处理阶段**，和**事件冒泡阶段**。
   - **事件处理**阶段会首先执行目标元素绑定的监听事件
-  - **事件冒泡**指的是事件从目标元素冒泡到 ` window`，依次检查经过的节点是否绑定了事件监听函数
+  - **事件冒泡**指的是事件从目标元素冒泡到 `window`，依次检查经过的节点是否绑定了事件监听函数
 - DOM2级事件模型
-  - 在该事件模型中，一次事件共有**三**个过程，第一个过程是**事件捕获阶段**。捕获指的是事件从 ` window` 一直向下传播到目标元素，依次检查经过的节点是否绑定了事件监听函数，如果有则执行。**后面两个阶段和 IE 事件模型的两个阶段相同**。
+  - 在该事件模型中，一次事件共有**三**个过程，第一个过程是**事件捕获阶段**。捕获指的是事件从 `window` 一直向下传播到目标元素，依次检查经过的节点是否绑定了事件监听函数，如果有则执行。**后面两个阶段和 IE 事件模型的两个阶段相同**。
 
 ### 11.事件委托
 
@@ -580,8 +584,6 @@ person1.sayName();
 
 - JS在单线程中实现**异步机制**主要是依赖浏览器的**任务队列**
 
-  
-
 - js 是单线程运行的，在代码执行的时候，将不同函数的执行上下文压入执行栈中来保证代码的有序执行。
 
 - 在执行同步事件的时候，如果遇到了异步事件，js 引擎并不会一直等待其返回结果，而是会将这个事件挂起，继续执行执行栈中的其他任务
@@ -613,14 +615,14 @@ person1.sayName();
 - 微任务：Promise、process.nextTick、async、await
 - 遇到微任务，先执行微任务，执行完后如果没有微任务，就执行下一个宏任务，如果有微任务，就按顺序一个一个执行微任务
 
-### 15.什么是` async/await`及其如何工作
+### 15.什么是`async/await`及其如何工作
 
 - 是 Generator 函数的语法糖。
 
 - `async/await`是一种建立在Promise之上的编写异步或非阻塞代码的新方法，被普遍认为是 JS异步操作最优雅的解决方案。相对于 Promise 和回调，它的可读性和简洁度都更高
 - 以同步的方式执行异步
-- ` async `用于声明一个 function 是异步的，而` await` 用于等待一个异步方法执行完成。
-- 一个函数如果加上 ` async` ，那么该函数就会返回一个 Promise
+- `async`用于声明一个 function 是异步的，而`await` 用于等待一个异步方法执行完成。
+- 一个函数如果加上 `async` ，那么该函数就会返回一个 Promise
 
 ```js
 async function test() {
@@ -669,8 +671,8 @@ console.log(test()) // -> Promise {<resolved>: "1"}
 
 - `CORS`的全称是"**跨域资源共享**"（Cross-origin resource sharing）。 它允许浏览器向跨域服务器，发出`XMLHttpRequest`请求，从而克服`AJAX`只能同源使用的限制
 - 如何理解CORS
-  - 如果`wang.com`和`liu.com`这两个网站都是我的，我就是想让`wang.com`去访问`liu.com`里面的数据应该怎么办呢？
-  - 只需要`wang.com`在**响应头**里写`liu.com`可以访问即可。这就是`CORS`。
+  - 如果`baidu.com`和`google.com`这两个网站都是我的，我就是想让`baidu.com`去访问`google.com`里面的数据应该怎么办呢？
+  - 只需要`baidu.com`在**响应头**里写`google.com`可以访问即可。这就是`CORS`。
   - **实现`CORS`通信的关键是服务器。只要服务器实现了`CORS`接口，就可以跨域通信。**
 - `CORS`跨域分为两种请求，一种是**简单请求**，另外一种就是**非简单请求**。
 
@@ -756,7 +758,7 @@ devServer: {
 
 - 是一个闭包函数
 
-#### 19.1防抖` debounce`
+#### 19.1防抖`debounce`
 
 - 指触发事件后在 n 秒内函数只能执行一次，如果在 n 秒内又触发了事件，则会重新计算函数执行时间
 
@@ -777,7 +779,7 @@ function debounce(fn, delay = 50){
 }
 ```
 
-#### 19.2节流` throttle`
+#### 19.2节流`throttle`
 
 - 指连续触发事件但是在 n 秒中只执行一次函数。节流会稀释函数的执行频率。
 
@@ -805,10 +807,10 @@ function throttle(fn, delay = 100){
 - for-of：允许遍历获得键值value，只遍历当前对象不会遍历原型链
 - for-in循环主要用于**遍历对象**，格式：for(keys in zhangsan){}
 - for-of作为遍历所有**数据结构**的统一的方法。
-  - **for of为什么不能遍历Object对象？**
-  - 因为for of遍历依靠的是遍历器Iterator。而 **Array（数组）, String（字符串）, Map（映射）, Set（集合）**,TypedArray(类型化数组)、arguments、NodeList对象、Generator等可迭代的数据结构等早就内置好了Iterator（迭代器），它们的原型中都有一个Symbol.iterator方法，而**Object对象并没有实现这个接口，使得它无法被for...of遍历。**
+  - **for-of为什么不能遍历Object对象？**
+  - 因为for-of遍历依靠的是遍历器Iterator。而 **Array（数组）, String（字符串）, Map（映射）, Set（集合）**,TypedArray(类型化数组)、arguments、NodeList对象、Generator等可迭代的数据结构等早就内置好了Iterator（迭代器），它们的原型中都有一个Symbol.iterator方法，而**Object对象并没有实现这个接口，使得它无法被for...of遍历。**
 - **Object.keys和for-in区别**
-  - 两者之间最主要的区别就是Object.keys( )不会走原型链，而for in 会走原型链
+  - 两者之间最主要的区别就是Object.keys()不会走原型链，而for in 会走原型链
   - Object.keys**返回的是数组(key值)**
 
 ```js
@@ -852,7 +854,7 @@ console.log(k)
 
 #### 20.1.怎么判断一个对象是空对象
 
-- 根据`for-in`遍历对象，如果**存在则返回true，否则返回false**
+- 1、根据`for-in`遍历对象，如果**存在则返回true，否则返回false**
 
 ```js
 for ( let i in obj) {
@@ -861,7 +863,7 @@ for ( let i in obj) {
 return false
 ```
 
-- 用JSON自带的`JSON.stringify()`方法来判断
+- 2、用JSON自带的`JSON.stringify()`方法来判断
 
 ```js
 if (JSON.stringify(obj) === '{}') {
@@ -870,7 +872,7 @@ if (JSON.stringify(obj) === '{}') {
 return false;
 ```
 
-- **利用ES6中`Object.keys()`来进行判断 （推荐）**
+- 3、**利用ES6中`Object.keys()`来进行判断 （推荐）**
   - `Object.keys()`方法会返回一个由一个给定对象的自身可枚举属性组成的数组[key]。
   - 如果我们的对象为空，他会返回一个空数组。
 
@@ -880,10 +882,10 @@ Object.keys(obj).length === 0 ? '空' : '不为空'
 
 ### 21.new主要做了什么
 
-- 创建一个空的对象` obj`、` let obj = new Object()`
-- 设置原型链，将空对象的` __proto__`指向构造函数的` prototype`：` obj.__proto__ = Person.prototype`
-- 让构造函数的` this`指向该对象，运行该构造函数：`let result = Person.call(obj)`
-- 判断构造函数返回值类型，如果是基本类型，返回` obj`，如果是引用类型，就返回这个引用类型的对象
+- 创建一个空的对象`obj`、`let obj = new Object()`
+- 设置原型链，将空对象的`__proto__`指向构造函数的`prototype`：`obj.__proto__ = Person.prototype`
+- 让构造函数的`this`指向该对象，运行该构造函数：`let result = Person.call(obj)`
+- 判断构造函数返回值类型，如果是基本类型，返回`obj`，如果是引用类型，就返回这个引用类型的对象
 
 - 手写：
 
@@ -896,14 +898,14 @@ function _new(fn, ...arg) {
 }
 
 // 使用的例子：
-function Firend(name, age) {
+function Friend(name, age) {
     this.name = name;
     this.age = age;
     this.sayName = function () {
         console.log(this.name);
     };
 }
-const xiaoMei = _new(Firend, 'Xiao Mei', 18)
+const xiaoMei = _new(Friend, 'Xiao Mei', 18)
 console.log(xiaoMei)  // Firend {name: "Xiao Mei", age: 18, sayName: ƒ}
 ```
 
@@ -1029,6 +1031,10 @@ console.log({} instanceof Object);                   // true
 #### 23.3.Object.prototype.toString.call()
 
 - 可以精确判断是什么类型
+  
+- `call` 是函数的方法，用来改变 `this` 指向，用 `apply` 也可以。
+
+- 如果不改变`this`指向为我们的目标变量，`this`将永远指向调用的`Object.prototype`。
 
 ### 24.什么是es6?es6新特性?
 

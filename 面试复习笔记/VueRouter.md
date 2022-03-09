@@ -18,7 +18,7 @@
 - 直接赋值location.hash改变href，页面不会刷新
 
 - HTML5的history模式(5种方法)，页面也不会刷新
-  - ` pushState`、` replaceState`、 `back`、`forward` 、` go`
+  - `pushState`、`replaceState`、 `back`、`forward` 、`go`
   
 - 通过historyAPI，我们丢掉了丑陋的#，但是它也有个问题：不怕前进，不怕后退，就怕刷新，f5，（如果后端没有准备的话会出现404错误）,因为**刷新是实实在在地去请求服务器的**。
 
@@ -100,9 +100,9 @@ const router = new Router({
 export default router
 ```
 
-- 使用路由：通过` <router-link>`这个相当于` <a>`标签**跳转路径**和` <router-view>`相当于**占位**
+- 使用路由：通过`<router-link>`这个相当于`<a>`标签**跳转路径**和`<router-view>`相当于**占位**
 
-#### 5.2` <router-link>`其他属性
+#### 5.2`<router-link>`其他属性
 
 - tag可以指定渲染成什么标签
 - replace后退键不能返回上一个
@@ -138,12 +138,12 @@ userClick() {
 
 #### 实现方式
 
-- 箭头函数包裹` import()`
+- 箭头函数包裹`import()`
   - ES6的语法
   - import 是在**编译时调用**,所以必须放在文件开头
   - import()是个**语法糖，返回值是一个Promise对象**，意味着这需要异步处理，你可以在.then()中拿到真正的模块
   - import是**解构过程**，但是目前所有的引擎都还没有实现import，我们在node中使用babel支持ES6，也仅仅是将ES6转码为ES5再执行，**import语法会被转码为require**
-- ` require`
+- `require`
   - AMD的规范
   - require是在**运行时调用**,所以require理论上可以运用在代码的任何地方
   - require是**赋值过程**，其实require的结果就是对象、数字、字符串、函数等，再把require的结果赋值给某个变量
@@ -161,8 +161,8 @@ component: resolve => (require(['./components/Home.vue'], resolve))
 
 - 配置路由格式：/router/:id
 - 传递方式：在path后面跟上对应值
-- 传递后形成路径：` /router/id`(参数不会在URL地址显示)
-- 取传递参数的方式：` $route.params.id`
+- 传递后形成路径：`/router/id`(参数不会在URL地址显示)
+- 取传递参数的方式：`$route.params.id`
 
 ```vue
 <!-- 这里用v-bind进行动态绑定 -->
@@ -179,8 +179,8 @@ data() {
 
 - 配置路由格式：/router
 - 传递方式：对象中使用**query的key**作为传递方式
-- 传递后形成路径：` /router?id=123&name=Kylin`(参数会在URL地址显示)
-- 取传递参数的方式：` $route.query.name`
+- 传递后形成路径：`/router?id=123&name=Kylin`(参数会在URL地址显示)
+- 取传递参数的方式：`$route.query.name`
 
 ```vue
 <!--传参数-->
@@ -208,10 +208,10 @@ profileClick() {
 },
 ```
 
-#### 7.4` $router`和 ` $route`的区别
+#### 7.4`$router`和 `$route`的区别
 
-- ` $router`是VueRouter实例(**全局**)，想要导航到不同URL，则使用` $router.push`方法，包括了路由的跳转方法，钩子函数等
-- ` $route`是当前router跳转对象(**当前活跃路由**)里可以获取` name`，` path`，` query`，` params`等
+- `$router`是VueRouter实例(**全局**)，想要导航到不同URL，则使用`$router.push`方法，包括了路由的跳转方法，钩子函数等
+- `$route`是当前router跳转对象(**当前活跃路由**)里可以获取`name`，`path`，`query`，`params`等
 
 ### 8.导航守卫
 
@@ -236,16 +236,16 @@ router.afterEach((to, from) => {
 })
 ```
 
-### 9.` keep-alive`状态缓存
+### 9.`keep-alive`状态缓存
 
-- 被包在` keep-alive`中的组件离开前的状态会被保存
+- 被包在`keep-alive`中的组件离开前的状态会被保存
 - 一般结合路由和动态组件一起使用，用于缓存组件
-- 对应两个钩子函数` actived`、` deactived`
-  - ` actived`：激活时调用
-  - ` deactived`：停用时调用
+- 对应两个钩子函数`actived`、`deactived`
+  - `actived`：激活时调用
+  - `deactived`：停用时调用
 - 两个重要属性
-  - ` include`：字符串或正则表达式，匹配的组件**会被缓存**
-  - ` exclude`：字符串或正则表达式，匹配的组件**不会被缓存**
+  - `include`：字符串或正则表达式，匹配的组件**会被缓存**
+  - `exclude`：字符串或正则表达式，匹配的组件**不会被缓存**
 
 ```html
 <keep-alive exclude="Profile">
