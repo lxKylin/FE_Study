@@ -61,6 +61,32 @@ React采用特殊的JSX语法，Vue在组件开发中使用`.vue`特殊文件格
 vue2.x 响应式是通过 **数据劫持** 结合 **发布订阅模式**的方式来实现的， 
 
 - **采用数据劫持结合发布-订阅模式，通过 `Object.defineProperty`来劫持各个属性的 setter，getter，当数据变动时，发布消息给订阅者，会触发响应的监听回调。**
+#### 总体流程
+
+- 在Vue中，每个组件实例都有相应的`watcher`实例对象，它会在组件渲染的过程中把属性记录为依赖，之后当依赖项的`setter`被调用时，会通知`watcher`重新计算，从而致使它关联的组件得以更新。(典型的观察者模式)
+
+#### 关键角色
+
+- `Observer`: 它的作用是给对象的属性添加`getter`和`setter`，用于依赖收集和派发更新
+- `Dep`: 用于收集当前响应式对象的依赖关系,每个响应式对象包括子对象都拥有一个`Dep`实例（里面`subs`是`Watcher`实例数组）,当数据有变更时,会通过`dep.notify()`通知各个`watcher`。
+- `Watcher`: 观察者对象 , 实例分为`渲染 watcher (render watcher)`,`计算属性 watcher (computed watcher)`,`侦听器 watcher（user watcher）`三种
+
+#### Watcher和Dep的关系
+![Watcher和Dep的关系](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6097bb7630dc44a68cb6b4c4dbef62f1~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp)
+
+- `Dep`究竟是用来做什么的呢？
+  - 我们通过`defineReactive`方法将`data`中的数据进行响应式后，虽然可以监听到数据的变化了，那我们怎么处理通知视图就更新呢？
+- `Dep`就是帮我们依赖管理的。
+- 如上图所示：一个属性可能有多个依赖，每个响应式数据都有一个`Dep`来管理它的依赖。
+
+#### 一段话总结原理
+
+- 当创建`Vue`实例时,`vue`会遍历`data`选项的属性,利用`Object.defineProperty`为属性添加`getter`和`setter`对数据的读取进行劫持（`getter`用来依赖收集,`setter`用来派发更新）,并且在内部追踪依赖,在属性被访问和修改时通知变化。
+  
+- 每个组件实例会有相应的`watcher`实例,会在组件渲染的过程中记录依赖的所有数据属性（进行依赖收集,还有`computed watcher`,`user watcher`实例）,之后依赖项被改动时,`setter`方法会通知依赖与此`data`的`watcher`实例重新计算（派发更新）,从而使它关联的组件重新渲染。
+
+#### 核心实现
+- 见详情
 
 #### 6.1响应式实现步骤
 
