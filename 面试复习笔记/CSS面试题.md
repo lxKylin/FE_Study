@@ -137,6 +137,7 @@
 
 ##### 5.2.1absolute+transfrom
 
+- 1
 ```css
 .parent {
 	position:relative;
@@ -146,6 +147,31 @@
   top:50%
 	left:50%
 	transfrom:translate(-50%,-50%)
+}
+```
+- 2、另外，如果父元素设置了flex布局，只需要给子元素加上`margin:auto;`就可以实现垂直居中布局
+```css
+.parent{
+    display:flex;
+}
+.child{
+    margin: auto;
+}
+```
+
+- 3、利用绝对定位，设置四个方向的值都为 0，并将 margin 设置为 auto，由于宽高固定，因此对应方向实现平分，可以实现水平和垂直方向上的居中。该方法适用于盒子有宽高的情况：
+```css
+.parent {
+    position: relative;
+}
+
+.child {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 ```
 
