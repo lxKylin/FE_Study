@@ -2,6 +2,27 @@
 
 Promise是异步编程的一种解决方案，他是一个构造函数，可以解决复杂网络请求出现的回调地狱；异步操作时，使用Promise对异步操作进行封装，它可以传入两个参数：resolve、reject，成功的时候调用resolve进行网络请求，再到下一步then处理代码，失败的时候调用reject，再到下一步catch捕获错误；
 
+#### Promise原理
+
+- Promise 是一个类，在执行这个类的时候会传入一个执行器，这个执行器会立即执行
+  
+- Promise 会有三种状态
+
+  - Pending 等待
+  - Fulfilled 完成
+  - Rejected 失败
+
+- 状态只能由 Pending --> Fulfilled 或者 Pending --> Rejected，且一但发生改变便不可二次修改；
+  
+- Promise 中使用 resolve 和 reject 两个函数来更改状态；
+  
+- then 方法内部做但事情就是状态判断
+
+  - 如果状态是成功，调用成功回调函数
+  - 如果状态是失败，调用失败回调函数
+
+
+
 - 是一个**构造函数**
 
 ```js
