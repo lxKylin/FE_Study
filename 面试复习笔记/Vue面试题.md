@@ -63,12 +63,16 @@ vue2.x 响应式是通过 **数据劫持** 结合 **发布订阅模式**的方�
 - **采用数据劫持结合发布-订阅模式，通过 `Object.defineProperty`来劫持各个属性的 setter，getter，当数据变动时，发布消息给订阅者，会触发响应的监听回调。**
 #### 总体流程
 
-- 在Vue中，每个组件实例都有相应的`watcher`实例对象，它会在组件渲染的过程中把属性记录为依赖，之后当依赖项的`setter`被调用时，会通知`watcher`重新计算，从而致使它关联的组件得以更新。(典型的观察者模式)
+![总体流程](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b52c07de7ac54f52abbc3d2f000f808b~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp)
+
+- 在Vue中，每个组件实例都有相应的`watcher`实例对象，它会在组件渲染的过程中把属性记录为依赖，之后当依赖项的`setter`被调用时，会通知`watcher`重新计算，从而致使它关联的组件得以更新。(典型的**观察者模式**)
 
 #### 关键角色
 
-- `Observer`: 它的作用是给对象的属性添加`getter`和`setter`，用于依赖收集和派发更新
+- `Observer`: 它的作用是通过`Object.defineProperty`给对象的属性添加`getter`和`setter`，用于依赖收集和派发更新
+  
 - `Dep`: 用于收集当前响应式对象的依赖关系,每个响应式对象包括子对象都拥有一个`Dep`实例（里面`subs`是`Watcher`实例数组）,当数据有变更时,会通过`dep.notify()`通知各个`watcher`。
+  
 - `Watcher`: 观察者对象 , 实例分为`渲染 watcher (render watcher)`,`计算属性 watcher (computed watcher)`,`侦听器 watcher（user watcher）`三种
 
 #### Watcher和Dep的关系
@@ -106,6 +110,38 @@ vue2.x 响应式是通过 **数据劫持** 结合 **发布订阅模式**的方�
 - 有三种方法push\unshift\splice能够插入新项，现在要把插入的新项也要变为响应式的
 - 使用`Object.setPrototypeOf()`将数组的`__proto__`指向`arrayMethods`对象  
 
+#### 6.3.vm.$set()添加响应式属性
+- 在Vue.js里面只有data中已经存在的属性才会被`Observe`为响应式数据, 
+- 如果你是新增的属性是不会成为响应式数据, 因此Vue提供了一个api(`vm.$set`)来解决这个问题。
+- **原理**
+  - `vm.$set()`在`new Vue()`时候就被注入到Vue的原型上。
+
+- **正确写法**
+  - `this.$set(this.data,”key”,value’)`
+
+- **注意**
+  - 对象不能是Vue实例，或者Vue实例的根数据对象（data）
+
+```js
+data () {
+  return {
+    student: {
+      name: '',
+      sex: ''
+    }
+  }
+}
+// 错误写法
+//mounted () { // ——钩子函数，实例挂载之后
+//  this.student.age = 24
+//}
+// 正确写法
+mounted () {
+  this.$set(this.student,"age", 24)
+}
+
+```
+
 ### 7.**vue组件中的data为什么是函数**
 
 组件中的data写成一个函数，数据以函数返回值的形式定义，这样每次复用组件的时候，都会返回一份新的data，相当于每个组件实例都有自己私有的数据空间，它们只负责各自维护的数据，不会造成混乱。而单纯的写成对象形式，就是所有的组件实例共用了一个data，这样改一个全都改了
@@ -131,7 +167,7 @@ vue2.x 响应式是通过 **数据劫持** 结合 **发布订阅模式**的方�
 
 - Vue2：ref="domName" 用法：this.$refs.domName
 
-- Vue3：ref="pageModalRef" const pageModalRef = **ref<InstanceType<typeof** PageModal>>()
+- Vue3：ref="pageModalRef" const pageModalRef = ref<InstanceType<typeof PageModal>>()
 
 ### 10.Vue两个核心点
 
@@ -248,6 +284,16 @@ vuex 是专门为 vue 提供的全局状态管理系统，可以为多个组件�
 - 在不同的组件中经常会需要用到一些相同或者相似的代码，这些代码的功能相对独立，可以通过 Vue 的 mixin 功能抽离公共的业务逻辑，
 
 - 原理类似“对象的继承”，当组件初始化时会调用 mergeOptions 方法进行合并，采用策略模式针对不同的属性进行合并。当组件和混入对象含有同名选项时，这些选项将以恰当的方式进行“合并”。
+  
+- 混入(mixin) 对于不同情况的策略：
+
+  - 函数叠加混入（data、provide）
+  - 数组叠加混入（hook、watch）
+  - 原型链叠加混入（components，filters，directives）
+  - 对象覆盖混入（props，methods，computed，inject ）
+  - 替换覆盖混入（el，template，propData）
+
+
 
 ### 21.Vue首屏加载优化方案
 
