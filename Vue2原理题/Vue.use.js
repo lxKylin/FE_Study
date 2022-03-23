@@ -8,6 +8,7 @@
 function initUse (Vue) {
   // plugin是插件 参数类型必须是 Object 或 Function
   Vue.use = function (plugin) {
+    // this指向的是Vue构造器
     // 定义 installedPlugins 如果 this._installedPlugins 不存在则为[]
     var installedPlugins = (this._installedPlugins || (this._installedPlugins = []));
     // 判断这个插件是否存在 installedPlugins 如果存在就结束，这就是为什么多次调用同一插件，插件只会注册一次
@@ -22,18 +23,25 @@ function initUse (Vue) {
     // arguments 是一个对应于传递给函数的参数的类数组对象
     var args = toArray(arguments, 1);
     // unshift 向前添加 this 到 args 
-    // 为什么要把这个 this 放到 args 的第一个位置上呢？
-    // 这个就和 install 的传递的参数有关系，第一个参数是Vue构造器，第二个参数是可选的选项 options
-    // 这里可以看到参数plugin在封装的时候需要暴露一个install方法，或者自身是一个方法，不然是无法传递参数的
+    /**
+     * 为什么要把这个 this 放到 args 的第一个位置上呢？
+     * 
+     * 这个就和 install 的传递的参数有关系，第一个参数是Vue构造器，第二个参数是可选的选项 args
+     * 这里可以看到参数plugin在封装的时候需要暴露一个install方法，或者自身是一个方法(函数)，不然是无法传递参数的
+     */
 
     args.unshift(this);
-    // 判断入参是否有install方法
+    // 判断入参是否有install方法且插件是对象
     if (typeof plugin.install === 'function') {
-      // 有就执行，动态改this指向为plugin
+      console.log(this, '111111')
+      // 有install就执行，动态改this指向为plugin
       plugin.install.apply(plugin, args);
+      console.log(this, '3333')
+      // 如果传入的插件是函数，就直接调用，但此时的this只能为null
     } else if (typeof plugin === 'function') {
-      // 插件本身就是function 动态改this指向为null
+      console.log(this, '22222')
       plugin.apply(null, args);
+      console.log(this, '44444')
     }
     // 已注册插件列表添加插件
     installedPlugins.push(plugin);
@@ -49,48 +57,49 @@ function initUse (Vue) {
   start = start || 0;
   var i = list.length - start;
   var ret = new Array(i);
+  // 循环拿出数组
   while (i--) {
     ret[i] = list[i + start];
   }
   return ret
 }
 
+// 创建一个Vue类进行测试
 class Vue {
   constructor() {}
-  _installedPlugins = [];
+  _installedPlugins = []; // 存储插件的数组
   test() {
     console.log('test')
   }
 }
-initUse (Vue)
 
+initUse(Vue)
+
+// 1、对象Object
 const plugin = {
-  install(vue, option) {
+  install(vue, args) {
     console.log('plugin')
     console.log(vue, 'vue')
-    console.log(option, 'option')
-    vue.prototype.like = function (option) {
+    console.log(args, 'args')
+    vue.prototype.like = function (args) {
       console.log('like')
-      console.log(option, 'option____')
+      console.log(args, 'args____')
     }
   }
 }
 
-const plugin2 = {
-  install(vue, option) {
-    console.log('plugin2')
-    console.log(vue, 'vue2')
-    console.log(option, 'option2')
-  }
+// 2、函数Function
+function b() {
+  console.log('我是个测试的函数')
 }
 
 Vue.use(plugin, 'Kylin')
-// Vue.use(plugin2, '111')
+Vue.use(b, '111')
 // Vue.use(plugin)
 
 const vue = new Vue()
-vue.test()
-vue.like(1)
+// vue.test()
+// vue.like(1)
 console.log(Vue._installedPlugins)
 
 /**
@@ -103,5 +112,5 @@ console.log(Vue._installedPlugins)
  * 然后使用toArray方法转换类数组把this，也就是Vue构造函数unshift到转换完成的数组前面，这样做是为了
  * install函数中两个形参一个为Vue构造函数，另外的是options。
  * 然后就是判断plugin.install或者plugin是否为函数，是的话使用apply调用并且传入转化好的形参
- * 组后再把插件保存至_installedPlugins属性上 return this
+ * 最后再把插件保存至_installedPlugins属性上 return this
  */
