@@ -282,6 +282,7 @@ border-bottom: 40px solid #ff0000;
 
 - BFC (Block Formatting Context) 块级格式化上下文
   - 只有块级盒子参与，它规定了内部的块级盒子垂直排列
+  - 指一个独立的渲染区域或者说是一个隔离的独立容器。
 - IFC (Inline Formatting Context) 行内格式化上下文
   - 子元素在水平方向上一个接一个排列
 
@@ -388,5 +389,11 @@ border-bottom: 40px solid #ff0000;
 - visibility具有**继承性**，给父元素设置visibility:hidden;子元素也会继承这个属性。但是如果重新给子元素设置visibility: visible,则子元素又会显示出来。这个和display: none有着质的区别
 
 - display:none 隐藏后的元素**不占据任何空间**，而 visibility:hidden 隐藏的元素**空间依旧存在**
+- opacity: 0，隐藏的元素**空间依旧存在**，可触发绑定事件
 - display:none 隐藏**产生回流和重绘**（reflow 和 repaint），而 visibility:hidden **只产生重绘**
 
+- opacity: 0，透明度为0，即隐藏
+
+### 16.CSS为什么初始化
+
+- 因为浏览器的兼容问题，不同浏览器对有些标签的默认值是不同的，如果没对CSS初始化往往会出现浏览器之间的页面显示差异。
