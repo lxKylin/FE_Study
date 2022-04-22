@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>js实现查看网络状态</title>
+</head>
+<body>
+<div>
+  <h3>改变网络状态测试效果</h3>
+  <h1 id="p1">获取网络在线状态：</h1>
+  <h1 id="p2">获取网络具体状态：</h1>
+  <h1 id="p3">获取网络速度：</h1>
+</div>
+<script>
+// https://juejin.cn/post/7082567435789795336
+  window.onload = function() {
+    getNetworkConnectionChange();
+    getNetworkOnLineChange();
+  };
+
+  // connection 的兼容性较低，谨慎使用
+  // 通过navigator.connection获取当前网络状态，可对connection进行监听，从而及时获取网络状态的变更
+  function getNetworkConnectionChange() {
+    // connection 的兼容性较低
+    const connection = navigator.connection || navigator.webkitConnection || navigator.mozConnection;
+    updateText("p2", "网络状态：" + connection.effectiveType);
+    updateText("p3", "网络下行速度：" + connection.downlink + "MB/S");
+
+    // 对connection变更监听
+    connection.addEventListener("change", () => {
+      // connection.effectiveType返回的是具体的网络状态：4g/3g/2g
+      updateText("p2", "网络状态：" + connection.effectiveType);
+      updateText("p3", "网络下行速度：" + connection.downlink + "MB/S");
+    });
+  }
+
+  // 通过navigator.online判断当前网络是否在线，对navigator进行监听，从而及时获取网络状态的变更
+  function getNetworkOnLineChange() {
+    updateText("p1", "您的网络是否在线：" + window.navigator.onLine);
+
+    // 对online网络在线变更监听
+    window.addEventListener("online", function() {
+      updateText("p1", "您的网络是否在线：" + window.navigator.onLine);
+    });
+
+    // 对offline断网变更监听
+    window.addEventListener("offline", function() {
+      updateText("p1", "您的网络是否在线：" + window.navigator.onLine);
+    });
+  }
+
+  function updateText(id, msg) {
+    document.getElementById(id).textContent = msg;
+    console.log(msg);
+  }
+
+</script>
+</body>
+</html>
