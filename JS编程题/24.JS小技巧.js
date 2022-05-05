@@ -48,11 +48,28 @@ Object.entries(objThree).forEach(([key, val]) => {
 
 // 4.使用includes简化if判断 或逻辑
 console.log('----------------4----------------')
-const a = 3
-if (a === 1 || a === 2 || a === 3 || a === 4) {
+const ag = 3
+if (ag === 1 || ag === 2 || ag === 3 || ag === 4) {
   // ...
 }
 // includes() 方法用来判断一个数组是否包含一个指定的值
-if ([1, 2, 3, 4].includes(a)) {
+if ([1, 2, 3, 4].includes(ag)) {
   // ...
 }
+
+// 使用 if 的条件判断
+const res = 1
+if(res) {
+  console.log('res') // 或者是一个函数
+}
+
+// 你可以替换成这样 使用 &&
+res && console.log('res')
+
+const arr2 = [1, 2, '3', 4]
+const arr3 = []
+const l = 1
+l && arr2.forEach(item => {
+  arr3.push(item)
+})
+console.log(arr3, 'arr3')
