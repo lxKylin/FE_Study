@@ -11,6 +11,7 @@ class EventEmitter {
   on(name, fun) {
     // this.list.push({name, fun})
 
+    // 如果没有这个订阅者，那么将这个订阅者初始化为空数组
     if (!this.list[name]) {
       this.list[name] = []
     }
@@ -41,6 +42,7 @@ class EventEmitter {
     if (this.list[name]) {
       const index = this.list[name].indexOf(name)
       if (index !== -1) {
+        // 删除
         this.list[name].splice(index, 1)
       }
       if (this.list[name].length === 0) {
