@@ -73,3 +73,42 @@ l && arr2.forEach(item => {
   arr3.push(item)
 })
 console.log(arr3, 'arr3')
+
+/**
+ * 5.用?? 代替 || 
+ * 用于判断运算符左边的值为null或者undefined时，才返回右边的值
+ * ||运算符是左边是空字符串或false或0等false值，就会返回右边的值
+ * ??运算符则必须左侧的值是null或者undefined时，才会返回右侧的值
+ */
+console.log('----------------5----------------')
+const test = {
+  a: null,
+  b: 0,
+  c: undefined,
+  d: '小刘同学'
+}
+console.log(test.a || 'a') // a
+console.log(test.a ?? 'a2') // a2
+console.log(test.b || 'b') // b
+console.log(test.b ?? 'b2') // 0
+console.log(test.c || 'c') // c
+console.log(test.c ?? 'c2') // c2
+console.log(test.d || 'd') // 小刘同学
+console.log(test.d ?? 'd2') // 小刘同学
+
+/**
+ * 6. 使用 ?. 取代 && 和三元运算符
+ */
+console.log('----------------6----------------')
+const user = {
+  name: '小刘同学', 
+  age: 22, 
+  address: {
+    where: '福建'
+  }
+}
+let from = user.address && user.address.where
+console.log(from)
+// 简化 => 
+let from2 = user.address?.where
+console.log(from2)
