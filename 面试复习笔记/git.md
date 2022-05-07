@@ -33,3 +33,24 @@ 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
 打标签：` git tag <name>`
 
 查看所有标签：` git tag`
+
+- 保存当前未commit的代码
+git stash
+
+- 保存当前未commit的代码并添加备注
+git stash save "备注的内容"
+
+- 列出stash的所有记录
+git stash list
+
+- 删除stash的所有记录
+git stash clear
+
+- 应用最近一次的stash
+git stash apply
+
+- 应用最近一次的stash，随后删除该记录
+git stash pop
+
+- 删除最近的一次stash
+git stash drop
