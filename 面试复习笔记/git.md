@@ -22,6 +22,8 @@ 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
 
 切换分支：` git checkout <name>`
 
+在name2基础上创建name1并切换到分支：` git checkout -b <name1> <name2>`
+
 创建+切换分支：` git checkout -b <name>`
 
 合并某分支到当前分支：` git merge <name>`
