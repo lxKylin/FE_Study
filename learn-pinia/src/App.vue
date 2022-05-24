@@ -48,7 +48,12 @@ const increment = () => {
   userStore.addCount();
 };
 
-// $patch 修改state的值 也可更改多个值
+/**
+ * $patch 修改state的值 也可更改多个值
+ * 两种方式：
+ * 1: patch + 函数
+ * 2: patch + 对象
+ */
 userStore.$patch((state) => {
   state.list[0].age = 18;
   state.list[0].name = '小刘同学';
