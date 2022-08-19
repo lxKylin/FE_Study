@@ -5,15 +5,15 @@ const path = require('path');
 const pathStr = path.join('/a', '/b/c', '../', './d', 'e');
 
 // ../会抵消一层路径
-console.log(pathStr) // /a/b/d/e
+console.log(pathStr); // /a/b/d/e
 
-const pathStr2 = path.join(__dirname,'/a', '/b/c', '../', './d', 'e');
-console.log(pathStr2)
+const pathStr2 = path.join(__dirname, '../../a', '/b/c', '../', './d', 'e');
+console.log(pathStr2);
 
 // resolve对于给定的路径片段，是从右向左拼接处理，直至构造出绝对路径;
 
-// const pathStr3 = path.resolve('a', 'b/c', 'd') // /Users/liuxin/Project/study/a/b/c/d
+const pathStr3 = path.resolve(__dirname, 'a', 'b/c', 'd'); // /Users/liuxin/Project/study/a/b/c/d
 // const pathStr3 = path.resolve('/a', 'b/c', 'd') // /a/b/c/d
 // const pathStr3 = path.resolve('/a', '/b/c', 'd') // /b/c/d
-const pathStr3 = path.resolve('/a', '/b/c', '/d') // /d
-console.log(pathStr3)
+// const pathStr3 = path.resolve('/a', '/b/c', '/d'); // /d
+console.log(pathStr3);
