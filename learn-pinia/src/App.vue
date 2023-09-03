@@ -1,68 +1,86 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
   <div>
-    {{ userStore.name }}
+    <div id="drag-source" draggable>
+      <div class="image" style="border: 1px solid #ccc">
+        <img alt="Vue logo" src="./assets/logo.png" />
+        <img alt="Vue logo" src="./assets/logo.png" />
+      </div>
+    </div>
+    <div>
+      <button @click="home">home</button>
+      <button @click="about">about</button>
+    </div>
   </div>
   <div>
-    {{ name }}
+    <div class="test" draggable>测试拖拽</div>
   </div>
-  <button @click="updateName">修改名称</button>
-  <div>
-    {{ userStore.count }}
-  </div>
-  <div>
-    {{ count }}
-  </div>
-  <div>
-    {{ double }}
-  </div>
-  <button @click="increment">+1</button>
 
-  <div>{{ userStore.list[0] }}</div>
+  <div class="container">
+    <div id="text-source" class="main">
+      <router-view></router-view>
+    </div>
+    <div id="drop-target-1" class="main">
+      <div>拖放区</div>
+    </div>
+  </div>
+  <div class="container">
+    <div id="drop-target-2" class="main">
+      <div>拖放区</div>
+    </div>
+    <div id="drop-target-3" class="main">
+      <div>拖放区</div>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
 
-import { useUserStore } from '@/store/user';
+// router
+const router = useRouter();
+const route = useRoute();
 
-// 1
-const userStore = useUserStore();
-
-// 2
-// const name = computed(() => userStore.name)
-const count = computed(() => userStore.count);
-const double = computed(() => userStore.double);
-
-// 3 解构 使用pinia自带的storeToRefs防止失去响应式
-import { storeToRefs } from 'pinia';
-const { name } = storeToRefs(userStore);
-
-// 改名称
-const updateName = () => {
-  userStore.updateName('Arms');
+const home = () => {
+  router.push('/home');
+};
+const about = () => {
+  router.push({ path: '/about' });
 };
 
-// 进行+1操作
-const increment = () => {
-  userStore.addCount();
+// 拖动目标的dragstart事件处理函数
+const handleDragStart = (event) => {
+  // 设置传输的数据类型和值
+  event.dataTransfer.setData('text/plain', event.target.src);
 };
 
-/**
- * $patch 修改state的值 也可更改多个值
- * 两种方式：
- * 1: patch + 函数
- * 2: patch + 对象
- */
-userStore.$patch((state) => {
-  state.list[0].age = 18;
-  state.list[0].name = '小刘同学';
-});
+// 放置目标的drop事件处理函数
+const handleDrop = (event) => {
+  // 获取传输的数据
+  var imageUrl = event.dataTransfer.getData('text/plain');
+  console.log(imageUrl, 'imageUrl');
 
-// 监听订阅state
-const subscribe = userStore.$subscribe((mutation, state) => {
-  console.log(mutation);
-  console.log(state);
+  var imageElement = document.createElement('img');
+  imageElement.src = imageUrl;
+
+  const dropTarget = document.getElementById('drop-target-1');
+  console.log(imageElement, 'imageElement');
+  // 将图片元素添加到目标区域中
+  dropTarget.appendChild(imageElement);
+};
+
+// 阻止放置目标的dragover事件默认行为
+const handleDragOver = (event) => {
+  event.preventDefault();
+};
+
+onMounted(() => {
+  // 添加事件监听器
+  const dragSource = document.getElementById('drag-source');
+  const dropTarget = document.getElementById('drop-target-1');
+  dragSource.addEventListener('dragstart', handleDragStart);
+  dropTarget.addEventListener('drop', handleDrop);
+  dropTarget.addEventListener('dragover', handleDragOver);
 });
 </script>
 
@@ -74,5 +92,12 @@ const subscribe = userStore.$subscribe((mutation, state) => {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.container {
+  display: flex;
+}
+.main {
+  border: 1px solid #ccc;
+  width: 50%;
 }
 </style>
