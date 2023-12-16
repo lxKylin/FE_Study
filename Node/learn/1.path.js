@@ -8,7 +8,7 @@ const pathStr = path.join('/a', '/b/c', '../', './d', 'e');
 console.log(pathStr); // /a/b/d/e
 
 const pathStr2 = path.join(__dirname, '../../a', '/b/c', '../', './d', 'e');
-console.log(pathStr2);
+console.log(pathStr2, 'pathStr2'); // /Users/liuxin/Project/study/a/b/d/e
 
 // resolve对于给定的路径片段，是从右向左拼接处理，直至构造出绝对路径;
 

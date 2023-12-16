@@ -38,10 +38,12 @@ class Dep {
     this.subs = [];
   }
 
+  // 添加依赖
   addSub(sub) {
     this.subs.push(sub);
   }
 
+  // 派发更新
   notify() {
     this.subs.forEach((sub) => {
       sub.update();

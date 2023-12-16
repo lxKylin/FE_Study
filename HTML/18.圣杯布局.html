@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .layout {
+        padding: 0 200px;
+      }
+      .main {
+        float: left;
+        width: 100%;
+      }
+      .left,
+      .right {
+        position: relative;
+        float: left;
+        width: 200px;
+      }
+      .left {
+        margin-left: -100%;
+        left: -200px;
+      }
+      .right {
+        margin-right: -200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <div class="main">main</div>
+      <div class="left">left</div>
+      <div class="right">right</div>
+    </div>
+  </body>
+</html>
