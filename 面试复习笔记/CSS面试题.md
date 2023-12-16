@@ -56,6 +56,16 @@
 #### 4.1圣杯(相对定位)
 
 - 在三栏之外定义一个父级盒子
+- 三者都向左浮动
+
+```html
+<div class="container">
+  <!-- 1. 让中间第一，这样浮动的时候它会先占据100%宽 -->
+  <div class="content">content</div>
+  <div class="left">left</div>
+  <div class="right">right</div>
+</div>
+```
 
 ```css
 .container {
@@ -75,15 +85,25 @@
   left: -200px;
 }
 .right {
-  margin-left: -200px;
-  right: -200px;
+  margin-right: -200px;
 }
 ```
 
 #### 4.2双飞翼
 
+```html
+<div class="container">
+  <!-- 1. 让中间第一，这样浮动的时候它会先占据100%宽 -->
+  <div class="center">
+    <div>center</div>				 <!-- 2. 嵌套一个div，用来装真正的中间内容 -->
+  </div>
+  <div class="left">left</div>
+  <div class="right">right</div>
+</div>
+```
+
 ```css
-.center{
+.center {
   float: left;
   width: 100%;
 }
@@ -91,10 +111,10 @@
   float: left;
   width: 200px;
 }
-.left{
+.left {
   margin-left: -100%;
 }
-.right{
+.right {
   margin-left: -200px;
 }
 ```
@@ -117,7 +137,7 @@
 
 #### 5.1固定宽高的块级盒子
 
-##### 5.1.1absolute+margin
+##### 5.1.1 absolute+margin
 
 ```css
 .parent {
@@ -127,15 +147,15 @@
 	position:absolute;/ˈæbsəluːt/
 	width:100px;
 	height:100px;
-  top:50%
-	left:50%
+  top:50%;
+	left:50%;
 	margin: -50px 0 0 -50px
 }
 ```
 
 #### 5.2不固定宽高的块级盒子
 
-##### 5.2.1absolute+transfrom
+##### 5.2.1 absolute+transfrom
 
 - 1
 ```css
@@ -144,8 +164,8 @@
 }
 .child {
 	position:absolute;
-  top:50%
-	left:50%
+  top:50%;
+	left:50%;
 	transfrom:translate(-50%,-50%)
 }
 ```
@@ -162,16 +182,16 @@
 - 3、利用绝对定位，设置四个方向的值都为 0，并将 margin 设置为 auto，由于宽高固定，因此对应方向实现平分，可以实现水平和垂直方向上的居中。该方法适用于盒子有宽高的情况：
 ```css
 .parent {
-    position: relative;
+  position: relative;
 }
 
 .child {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 ```
 
@@ -183,7 +203,7 @@
 
 ```css
 .parent {
-    text-align: center;
+  text-align: center;
 }
 ```
 
@@ -212,12 +232,10 @@
 #### 使用flex布局实现水平垂直居中
 
 ```css
-display: flex
-justify-content: center
-align-item: center
+display: flex;
+justify-content: center;
+align-item: center;
 ```
-
-
 
 ### 6.清除浮动
 
@@ -236,18 +254,18 @@ align-item: center
 }
 ```
 
-#### 6.2` :after`伪元素法
+#### 6.2`:after`伪元素法
 
 ```css
 .clearfix:after {
-    content:"";
-    display: block;
-    height:0;
-    clear:both;
-    visibility:hidden
+  content:"";
+  display: block;
+  height:0;
+  clear:both;
+  visibility:hidden
 }
 .clearfix {
-    *zoom:1;
+  *zoom:1;
 }
 ```
 
@@ -281,11 +299,18 @@ border-bottom: 40px solid #ff0000;
 ### 9.格式化上下文
 
 - BFC (Block Formatting Context) 块级格式化上下文
+  - BFC是一个独立的布局环境，BFC内部的元素布局与外部互不影响；
+  - 可以通过一些条件触发BFC，从而实现布局上的需求或解决一些问题；
   - 只有块级盒子参与，它规定了内部的块级盒子垂直排列
   - 指一个独立的渲染区域或者说是一个隔离的独立容器。
 - IFC (Inline Formatting Context) 行内格式化上下文
   - 子元素在水平方向上一个接一个排列
-
+- BFC的触发条件
+  - 根元素（）
+  - float值非none
+  - overflow值非visible
+  - display值为inline-block、table-cell、table-caption、flex、inline-flex
+  - position值为absolute、fixed
 ### 10.弹性布局
 
 - **display: flex**
@@ -397,3 +422,43 @@ border-bottom: 40px solid #ff0000;
 ### 16.CSS为什么初始化
 
 - 因为浏览器的兼容问题，不同浏览器对有些标签的默认值是不同的，如果没对CSS初始化往往会出现浏览器之间的页面显示差异。
+
+### 17.BEM规范的理解
+
+- BEM是Block（块）、Element（元素）、Modifier（修饰符）的简写
+
+#### 命名规则
+- 块名称为其元素和修饰符定义了命名空间。
+- 块名称与元素名称之间用双连字符--分隔。
+- 块名称与修饰符或元素与修饰符之间用双下划线__分隔。
+- 命名一般使用小写字母。
+- 单词之间可以使用-分隔。
+
+- `__`为下一级
+- `--`为修饰
+
+```css
+<!-- top 块 -->
+<div class="top">
+    <!-- search-form块混合top块的search-form元素 -->
+    <form class="search-form top__search-form">搜索</form>
+</div>
+
+<div>
+    <button class="btn">正确</button>
+    <button class="btn btn--error">错误</button>
+</div>
+
+.btn{
+    font-size:16px;
+    color:white;
+    border:none;
+    padding:10px 8px;
+    display: inline-block;
+    background-color:green;
+}
+.btn--error{
+    background-color:red;
+}
+
+```

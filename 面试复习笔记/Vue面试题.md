@@ -60,7 +60,7 @@ React采用特殊的JSX语法，Vue在组件开发中使用`.vue`特殊文件格
 
 vue2.x 响应式是通过 **数据劫持** 结合 **发布订阅模式**的方式来实现的， 
 
-- **采用数据劫持结合发布-订阅模式，通过 `Object.defineProperty`来劫持各个属性的 setter，getter，当数据变动时，发布消息给订阅者，会触发响应的监听回调。**
+- **采用数据劫持/数据代理结合发布-订阅模式，通过 `Object.defineProperty`来劫持各个属性的 setter，getter，当数据变动时，发布消息给订阅者，会触发响应的监听回调。**
 #### 总体流程
 
 ![总体流程](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b52c07de7ac54f52abbc3d2f000f808b~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp)

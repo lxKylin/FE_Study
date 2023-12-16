@@ -124,6 +124,16 @@ console.log(age);//490423
   - 关注 `DOM` 生命周期，在销毁阶段记得解绑相关事件
   - 避免过度使用闭包
 
+```js
+function A() {
+  let a = 1
+  window.B = function () {
+      console.log(a)
+  }
+}
+B()  // 1
+```
+
 ### 4.严格模式
 
 - 消除了JS语法的一些不合理、不严谨之处，减少了一些怪异行为
@@ -232,6 +242,7 @@ console.log(age);//490423
   }
   let b = {...a};
   ```
+  - 数组方法：`concat`，连接两个数组
 
 #### 6.2深拷贝(新开辟一个空间存放)
 
@@ -256,7 +267,7 @@ const obj = _.cloneDeep(info)
   console.log(info.friend.name === obj.friend.name); //false
   ```
 
-- 实现方式：递归
+- 实现方式：递归，具体见JS编程题文件夹
 
   - 新建对象用于保存；判断是不是引用对象类型且不能是null；判断传入的是数组还是对象，是数组的话进行for-in
 

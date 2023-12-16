@@ -19,7 +19,7 @@ module.exports = {
 
 - 使用过程
   - 步骤一：通过npm安装需要使用的loader
-  - 步骤二：在webpack.config.js的modules下配置
+  - 步骤二：在webpack.config.js的modules.rules下配置
 
 - 使用过的loader
   - css文件处理：css-loader(负责加载css文件)
@@ -85,6 +85,7 @@ module.exports = {
 - 完成模块编译并输出
 - 输出完成
 
+- 在加载模块的时候，执行顺序如下：entry  ->  loaders  ->  output
 
 
 - 初始化：启动构建，读取与合并配置参数，加载 Plugin，实例化 Compiler

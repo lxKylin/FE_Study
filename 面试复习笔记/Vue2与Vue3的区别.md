@@ -12,7 +12,7 @@
   - props：响应式的
   - context：this中最常用的三个属性值，可解构成{attrs, slot, emit}
 
-#### 1.2.响应式APIreactive、ref 与 toRefs
+#### 1.2.响应式API reactive、ref 与 toRefs
 
 - 这些方法都需要从vue中导入
 - 在 **vue2.x** 中， 定义数据都是在`data`中， 但是 **Vue3.x** 可以使用`reactive`和`ref`来进行数据定义
