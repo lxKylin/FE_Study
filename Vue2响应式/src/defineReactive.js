@@ -5,11 +5,10 @@ import Dep from './Dep.js';
 // 响应式Reactive 提供闭包环境
 // val是get和set 闭包中的环境
 export default function defineReactive(data, key, val) {
-
   const dep = new Dep();
   // console.log('我是defineReactive', key);
 
-  // 判断传入参数个数
+  // 判断传入参数个数, 如果只传入两个参数，那么val为该对象的本身值
   if (arguments.length == 2) {
     val = data[key];
   }
@@ -48,9 +47,9 @@ export default function defineReactive(data, key, val) {
       val = newValue;
       // 当设置了新值，这个新值也要被observe
       childOb = observe(newValue);
-      
+
       // 发布订阅模式，通知dep
       dep.notify();
     }
   });
-};
+}
